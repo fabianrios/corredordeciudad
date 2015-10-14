@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="large-12 columns">
+		<aside class="flash">
+		  <div flash-alert data-alert duration="0" active-class="alert-box" class="fade">
+		    {{flash.message}}
+				<a href="#" class="close">&times;</a>
+		  </div>
+		</aside>
+		<section class="col-md-6 col-md-offset-3">
+		  <article class="panel panel-info">
+		    <header class="panel-heading"><h1>{{recipe.name}}</h1></header>
+		    <p class="panel-body">
+		      {{recipe.instructions}}
+		    </p>
+		  </article>
+		  <button ng-click="back()" class="button">
+		    &larr; Back
+		  </button>
+		</section>
+	</div>
+</div>

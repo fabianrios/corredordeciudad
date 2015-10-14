@@ -3,32 +3,41 @@ mde15 = angular.module('mde15',[
   'ngRoute',
   'ngResource',
   'controllers',
+  'angular-flash.service',
+  'angular-flash.flash-alert-directive'
 ])
 
-mde15.config([ '$routeProvider',
-  ($routeProvider)->
+mde15.config([ '$routeProvider', 'flashProvider',
+  ($routeProvider,flashProvider)->
+    
+    flashProvider.errorClassnames.push("alert")
+    flashProvider.warnClassnames.push("warning")
+    flashProvider.infoClassnames.push("info")
+    flashProvider.successClassnames.push("success")
+    
     $routeProvider
       .when('/',
         templateUrl: "index.html"
         controller: 'MdeController'
+      ).when('/recipes/:recipeId',
+        templateUrl: "show.html"
+        controller: 'MdeController'
       )
 ])
 
-recipes = [
-  {
-    id: 1
-    name: 'Baked Potato w/ Cheese'
+mde15.factory 'Recipe', ($resource) ->
+  url = '/recipes/:recipeId'
+  $resource url, {
+    recipeId: '@id'
+    format: 'json'
   },
-  {
-    id: 2
-    name: 'Garlic Mashed Potatoes',
-  },
-  {
-    id: 3
-    name: 'Potatoes Au Gratin',
-  },
-  {
-    id: 4
-    name: 'Baked Brussel Sprouts',
-  },
-]
+    'create': method: 'POST'
+    'index':
+      method: 'GET'
+      isArray: false
+    'show':
+      method: 'GET'
+      isArray: true
+    'update':
+      method: 'PUT'
+      params: id: '@id'
