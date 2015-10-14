@@ -31,22 +31,26 @@ mde15.config([ '$routeProvider', 'flashProvider',
       )
 ])
 
-mde15.factory 'Recipe', ($resource) ->
-  url = '/recipes/:recipeId'
-  $resource url, {
-    recipeId: '@id'
-    format: 'json'
-  },
-    'create': method: 'POST'
-    'index':
-      method: 'GET'
-      isArray: false
-    'show':
-      method: 'GET'
-      isArray: true
-    'update':
-      method: 'PUT'
-      params: id: '@id'
-    'save':
-      method: 'PUT'
-      params: id: '@id'
+
+mde15.factory 'Recipe', [
+  '$resource'
+  ($resource) ->
+    url = '/recipes/:recipeId'
+    $resource url, {
+      recipeId: '@id'
+      format: 'json'
+    },
+      'create': method: 'POST'
+      'index':
+        method: 'GET'
+        isArray: false
+      'show':
+        method: 'GET'
+        isArray: true
+      'update':
+        method: 'PUT'
+        params: id: '@id'
+      'save':
+        method: 'PUT'
+        params: id: '@id'
+]
