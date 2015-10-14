@@ -23,6 +23,10 @@ gem 'jbuilder', '~> 2.0'
 
 # Dependencies with bower 
 gem 'bower-rails'
+# prepopulated cache
+gem 'angular-rails-templates'
+# to use templates 
+gem 'sprockets', '2.11.0'
 
 #heroku specific
 gem "foreman"
