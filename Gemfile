@@ -25,7 +25,7 @@ gem 'bower-rails'
 # prepopulated cache
 gem 'angular-rails-templates'
 # to use templates 
-gem 'sprockets', '2.11.0'
+gem 'sprockets', '2.12.4'
 
 #heroku specific
 gem "foreman"
