@@ -19,8 +19,14 @@ mde15.config([ '$routeProvider', 'flashProvider',
       .when('/',
         templateUrl: "index.html"
         controller: 'MdeController'
+      ).when('/recipes/new',
+        templateUrl: "form.html"
+        controller: 'MdeController'
       ).when('/recipes/:recipeId',
         templateUrl: "show.html"
+        controller: 'MdeController'
+      ).when('/recipes/:recipeId/edit',
+        templateUrl: "form.html"
         controller: 'MdeController'
       )
 ])
@@ -39,5 +45,8 @@ mde15.factory 'Recipe', ($resource) ->
       method: 'GET'
       isArray: true
     'update':
+      method: 'PUT'
+      params: id: '@id'
+    'save':
       method: 'PUT'
       params: id: '@id'
