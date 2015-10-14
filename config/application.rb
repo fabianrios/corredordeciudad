@@ -28,8 +28,5 @@ module Mde15
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     
-    #trying up for heroku problems
-    config.assets.initialize_on_precompile = false
-    
   end
 end
