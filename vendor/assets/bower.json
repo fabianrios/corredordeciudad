@@ -5,6 +5,9 @@
     "foundation": "latest",
     "angular-route": "latest",
     "angular-resource": "latest",
-    "angular-mocks": "latest"
+    "angular-mocks": "latest",
+    "angular-flash": "latest"
+  },
+  "resolutions": {
   }
 }
