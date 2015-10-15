@@ -1,7 +1,9 @@
 <div class="row">
   <div class="large-12 columns">
-    <h2>Mis eventos</h2>
-    <br />
+    <% if @eventos.count > 0 %>
+      <h2>Mis eventos</h2>
+      <br />
+    <% end %>
     <ul class="large-block-grid-3 small-block-grid-2">
       <% @eventos.each do |evento| %>
         <li>
@@ -48,8 +50,10 @@
       <% end %>
     </ul>
    
-    <br>
-    
-    <%= link_to 'Crear un nuevo evento', new_evento_path, class: "button success right radius" %>
+    <div class="text-center">
+      <br /><br />
+      <%= link_to 'Completar mi perfil', edit_user_registration_path, class: "button secondary" %>
+      <%= link_to 'Crear un nuevo evento', new_evento_path, class: "button success" %>
+    </div>
     </div>
 </div>

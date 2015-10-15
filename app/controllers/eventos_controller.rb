@@ -1,6 +1,6 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
   # GET /eventos
   # GET /eventos.json
   def index

@@ -478,9 +478,8 @@
         </div>
       </div>
       </div>
-    <br /><br />
+    <br />
       <div class="actions">
-        <%= link_to "volver", :back, class: "button left" %>
         <%= f.submit "Actualizar mi información", class: "button success right" %>
       </div>
     <% end %>
@@ -488,14 +487,15 @@
 
 <div class="row">
 <div class="large-12 columns">
-  <br /><br /><br /><br /><br />
+  <%= link_to "volver", :back, class: "button left" %>
+  <br /><br /><br />
   <hr />
   <h3>Cancelar mi cuenta</h3>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-4 columns">
       <p>¿Quieres cancelar la cuenta? </p>
     </div>
-    <div class="large-6 columns">
+    <div class="large-8 columns">
       <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete, class: "button alert tiny" %>
     </div>
   </div>

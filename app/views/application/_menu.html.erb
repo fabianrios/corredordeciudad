@@ -47,11 +47,13 @@
       <%= image_tag current_user.logo.present? ? current_user.logo_url(:thumb) : "http://placehold.it/70"  %>
     </div>
     <div class="info">
-      <h5 class="no-margin"><%= current_user.nombre %></h5>
-      <p class="no-margin"><%= link_to edit_user_registration_path, class: "redtxt" do %> <%= fa_icon "pencil", text: "Editar mi perfil" %> <% end %> | <%= link_to destroy_user_session_path, class: "redtxt" do %> <%= fa_icon "sign-out", text: "Cerrar sesión" %> <% end %></p>
+      <h5 class="no-margin capitalize"><%= current_user.nombre %></h5>
+      <p class="no-margin"><%= link_to edit_user_registration_path, class: "redtxt" do %> <%= fa_icon "pencil", text: "Editar mi perfil" %> <% end %> | <%= link_to destroy_user_session_path, :method => :delete, class: "redtxt" do %> <%= fa_icon "sign-out", text: "Cerrar sesión" %> <% end %></p>
     </div>
   <% else %>
-    <%= link_to "Registrarse", new_user_registration_path %> or
-    <%= link_to "Iniciar sesión", new_user_session_path %>
+    <div class="right default">
+      <%= link_to "Registrarse", new_user_registration_path, class: "redtxt"  %> o
+      <%= link_to "Iniciar sesión", new_user_session_path, class: "redtxt"  %>
+    </div>
   <% end %>
 </div>
