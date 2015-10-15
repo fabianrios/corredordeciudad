@@ -3,7 +3,7 @@
     {{flash.message}}
   </div>
 </aside>
-<form class="form-horizontal" role="form" class="edit-user">
+<form class="form-horizontal" role="form" class="edit-user" multipart="true">
   <div class="form-group" ng-class="{'has-warning has-feedback':errors.name}">
     <label 
       for="name" 
@@ -25,6 +25,9 @@
       </textarea>
     </div>
   </div>
+	<div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+	    accept="image/*" ngf-max-size="10MB" ngf-min-height="100" 
+	    ngf-resize="{width: 100, height: 100}">Seleccionar imagen</div>
   <div class="form-group">
     <div class="col-md-offset-2 col-md-3">
       <button class="btn btn-default" ng-click="cancel()"> Cancel</button>

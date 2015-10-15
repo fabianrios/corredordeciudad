@@ -6,6 +6,8 @@
     "angular-route": "latest",
     "angular-resource": "latest",
     "angular-mocks": "latest",
-    "angular-flash": "latest"
+    "angular-flash": "latest",
+    "ng-file-upload": "latest",
+    "ng-file-upload-shim": "latest"
   }
 }

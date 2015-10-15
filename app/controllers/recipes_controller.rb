@@ -7,14 +7,14 @@ class RecipesController < ApplicationController
   end
   
   def create
-    @recipe = Recipe.new(params.require(:recipe).permit(:name,:instructions))
+    @recipe = Recipe.new(recipe_params)
     @recipe.save
     render 'show', status: 201
   end
  
   def update
     recipe = Recipe.find(params[:id])
-    recipe.update_attributes(params.require(:recipe).permit(:name,:instructions))
+    recipe.update_attributes(recipe_params)
     head :no_content
   end
  
@@ -27,4 +27,11 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
   end
+  
+  private 
+    def recipe_params
+      p "params"
+      p params
+      params.require(:recipe).permit(:name,:instructions,:image)
+    end 
 end

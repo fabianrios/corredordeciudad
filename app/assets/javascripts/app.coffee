@@ -4,7 +4,8 @@ mde15 = angular.module('mde15',[
   'ngResource',
   'controllers',
   'angular-flash.service',
-  'angular-flash.flash-alert-directive'
+  'angular-flash.flash-alert-directive',
+  'ngFileUpload'
 ])
 
 mde15.config([ '$routeProvider', 'flashProvider',

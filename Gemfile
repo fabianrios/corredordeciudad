@@ -49,6 +49,13 @@ end
 gem 'realtime'
 gem 'redis'
 
+#images
+gem 'aws-sdk', '~> 1.8.1'
+gem 'carrierwave-aws'
+gem 'carrierwave', '0.10.0'
+gem 'rmagick', :require => 'RMagick'
+
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
