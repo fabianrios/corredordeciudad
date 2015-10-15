@@ -17,7 +17,7 @@
 //= require angular-route/angular-route
 //= require angular-resource
 //= require angular-flash
-//= require ng-file-upload/ng-file-upload
-//= require ng-file-upload-shim/ng-file-upload-shim
+//= require ng-file-upload
+//= require ng-file-upload-shim
 //= require angular-rails-templates
 //= require_tree .
