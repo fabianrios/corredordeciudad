@@ -28,7 +28,7 @@ class EventosController < ApplicationController
 
     respond_to do |format|
       if @evento.save
-        format.html { redirect_to action: "index", alert: 'El evento fue exitosamente creado.' }
+        format.html { redirect_to eventos_url, notice: 'El evento fue exitosamente creado.' }
         format.json { render :show, status: :created, location: @evento }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class EventosController < ApplicationController
   def update
     respond_to do |format|
       if @evento.update(evento_params)
-        format.html { redirect_to action: "index", alert: 'El evento fue actualizado.' }
+        format.html { redirect_to eventos_url, notice: 'El evento fue actualizado.' }
         format.json { render :show, status: :ok, location: @evento }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class EventosController < ApplicationController
   def destroy
     @evento.destroy
     respond_to do |format|
-      format.html { redirect_to eventos_url, notice: 'Evento was successfully destroyed.' }
+      format.html { redirect_to eventos_url, notice: 'El evento fue eliminado.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class EventosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params
-      params.require(:evento).permit(:nombre, :lugar, :direccion, :espacio, :necesidades, :descripcion, :web, :cuando, :imagen, :duracion)
+      params.require(:evento).permit(:nombre, :lugar, :direccion, :espacio, :necesidades, :descripcion, :web, :cuando, :imagen, :duracion, :user_id)
     end
 end

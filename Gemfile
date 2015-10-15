@@ -33,6 +33,8 @@ gem "foreman"
 gem 'foundation-rails'
 gem 'font-awesome-rails'
 
+gem 'devise'
+
 gem 'rails-i18n'
 
 group :production, :staging do

@@ -25,7 +25,7 @@
     <%= f.label :espacio, "Marque la casilla si necesita un espacio", id: "inliner" %>
   </div>
   <div class="field" id="necessities">
-    <%= f.label :necesidades %>
+    <%= f.label :necesidades, "Describa las necesidades del espacio" %>
     <%= f.text_area :necesidades %>
   </div>
 </div>
@@ -42,6 +42,9 @@
   <div class="field">
     <%= f.label :web, "Página web del evento" %>
     <%= f.text_field :web %>
+  </div>
+  <div class="field hide">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="field">
     <%= f.label :imagen do %>
