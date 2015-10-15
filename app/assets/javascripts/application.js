@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require angular/angular
 //= require angular-route/angular-route
@@ -21,3 +22,27 @@
 //= require ng-file-upload-shim
 //= require angular-rails-templates
 //= require_tree .
+
+$(function(){
+	 $(document).foundation(); 
+	 
+   $("#evento_espacio").each(function(index) {
+     if($(this).is(":checked")){
+       $("#necessities").show();
+     }
+   });
+	 
+	 
+   $("#evento_espacio").on( "click", function() {
+
+     if ($(this).is(":checked")) {
+       console.log("check");
+			 $("#necessities").show();
+     }
+     else if (!$(this).is(":checked")) {
+       console.log($("#necessities"),"uncheck");
+			 $("#necessities").hide();
+     }
+ 	});
+	 
+});

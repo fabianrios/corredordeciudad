@@ -12,6 +12,10 @@
  *
  *= require_tree .
  *= require_self
+
  */
 
-@import "foundation/css/foundation"
+@import "foundation/scss/foundation/settings";
+@import "font-awesome";
+@import "foundation/scss/foundation";
+

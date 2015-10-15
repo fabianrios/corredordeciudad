@@ -1,45 +1,35 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Mis eventos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Lugar</th>
-      <th>Direccion</th>
-      <th>Espacio</th>
-      <th>Necesidades</th>
-      <th>Descripcion</th>
-      <th>Web</th>
-      <th>Cuando</th>
-      <th>Imagen</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @eventos.each do |evento| %>
-      <tr>
-        <td><%= evento.nombre %></td>
-        <td><%= evento.lugar %></td>
-        <td><%= evento.direccion %></td>
-        <td><%= evento.espacio %></td>
-        <td><%= evento.necesidades %></td>
-        <td><%= evento.descripcion %></td>
-        <td><%= evento.web %></td>
-        <td><%= evento.cuando %></td>
-        <% if evento.imagen.present? %>
-        <td><%= image_tag evento.imagen_url(:thumb) %></td>
-        <% end %>
-        <td><%= link_to 'Show', evento %></td>
-        <td><%= link_to 'Edit', edit_evento_path(evento) %></td>
-        <td><%= link_to 'Destroy', evento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Evento', new_evento_path %>
+<div class="row">
+  <div class="large-12 columns">
+    <br />
+    <h2>Mis eventos</h2>
+    <br /><br />
+    <ul class="large-block-grid-3 small-block-grid-2">
+      <% @eventos.each do |evento| %>
+        <li>
+          <% if evento.imagen.present? %>
+            <%= image_tag evento.imagen_url(:big), class: "full" %>
+          <% end %>
+          <h4 class="no-margin"><%= evento.nombre %></h4>
+          <span class="label"><%= evento.cuando %></span>
+          <div class="desc">
+            <%= evento.descripcion.truncate(150, separator: ' ') %>
+          </div>
+          <h6 class="subheader no-margin"><%= evento.direccion %>, <%= evento.lugar %></h6>
+          <h6 class="subheader text-center"><%= link_to evento.web %></h6>
+          <div class="right">
+            <%= link_to edit_evento_path(evento), class: "secondary" do %>
+              <%= fa_icon "edit", text: "Editar" %>
+            <% end %>
+            <%= link_to  evento, method: :delete, data: { confirm: 'Are you sure?' }, class: "redtxt" do %>
+              <%= fa_icon "trash", text: "borrar" %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+   
+    <br>
+    
+    <%= link_to 'Crear un nuevo evento', new_evento_path, class: "button success right radius" %>
+    </div>
+</div>

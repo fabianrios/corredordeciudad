@@ -30,6 +30,11 @@ gem 'sprockets', '2.12.4'
 #heroku specific
 gem "foreman"
 
+gem 'foundation-rails'
+gem 'font-awesome-rails'
+
+gem 'rails-i18n'
+
 group :production, :staging do
   gem "rails_12factor"
   gem "rails_stdout_logging"

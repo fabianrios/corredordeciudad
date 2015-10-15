@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Mde15</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "MDE15" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+		
+	  <!-- required: realtime support framework -->
+	  <%= realtime_support %>
+	  <!-- optional: message_handler dequeues realtime messages into Backbone.js style events -->
+	  <%= realtime_message_handler %>
+	  <!-- optional: message_console_logger listens or dequeues realtime messages to the browser console -->
+	  <%= realtime_message_console_logger %>
+  </head>
+
+  <body>
+
+		<%= render partial: "sidebar" %>
+	
+		<div class="main-content">
+			<%= render partial: "menu" %>
+			<div class="main-yield">
+				<%= yield %>
+			</div>
+			<%= render partial: "footer" %>
+		</div>
+
+  </body>
 </html>

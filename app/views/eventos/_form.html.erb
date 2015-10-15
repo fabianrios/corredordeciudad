@@ -1,63 +1,76 @@
-<div class="row">
-  <div class="large-12 columns">
-    <%= form_for(@evento) do |f| %>
-      <% if @evento.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@evento.errors.count, "error") %> prohibited this evento from being saved:</h2>
-    
-          <ul>
-          <% @evento.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
+<%= form_for(@evento) do |f| %>
+  <% if @evento.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@evento.errors.count, "error") %> prohibited this evento from being saved:</h4>
+      <ol>
+      <% @evento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
-    
-      <div class="field">
-        <%= f.label :nombre %>
-        <%= f.text_field :nombre %>
-      </div>
-      <div class="field">
-        <%= f.label :lugar %>
-        <%= f.text_field :lugar %>
-      </div>
-      <div class="field">
-        <%= f.label :direccion %>
-        <%= f.text_field :direccion %>
-      </div>
-      <div class="field">
-        <%= f.label :espacio %>
-        <%= f.check_box :espacio %>
-      </div>
-      <div class="field">
-        <%= f.label :necesidades %>
-        <%= f.text_area :necesidades %>
-      </div>
-      <div class="field">
-        <%= f.label :descripcion %>
-        <%= f.text_area :descripcion %>
-      </div>
-      <div class="field">
-        <%= f.label :web %>
-        <%= f.text_field :web %>
-      </div>
-      <div class="field">
-        <%= f.label :cuando %>
+      </ol>
+    </div>
+  <% end %>
+
+<div class="large-4 columns">
+  <h3><span class="number">1</span> ¿Dónde?</h3>
+  <div class="field">
+    <%= f.label :lugar %>
+    <%= f.text_field :lugar %>
+  </div>
+  <div class="field">
+    <%= f.label :direccion, "Dirección" %>
+    <%= f.text_field :direccion %>
+  </div>
+  <div class="field">
+    <%= f.check_box :espacio %>
+    <%= f.label :espacio, "Marque la casilla si necesita un espacio", id: "inliner" %>
+  </div>
+  <div class="field" id="necessities">
+    <%= f.label :necesidades %>
+    <%= f.text_area :necesidades %>
+  </div>
+</div>
+<div class="large-8 columns">
+  <h3><span class="number">2</span> ¿Qué?</h3>
+  <div class="field">
+    <%= f.label :nombre, "Nombre del evento" %>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion, "Descripción" %>
+    <%= f.text_area :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :web, "Página web del evento" %>
+    <%= f.text_field :web %>
+  </div>
+  <div class="field">
+    <%= f.label :imagen do %>
+      Añadir una imagen del evento: <i class="redtxt">Rectangular min. 300x180 max. 1MB</i>
+    <% end %>
+    <% if @evento.imagen.present? %>
+      <%= image_tag @evento.imagen_url(:thumb), :class => 'th round' %>
+    <% end %>
+    <br />
+    <%= f.file_field :imagen %>
+  </div>
+  <br />
+  <h3><span class="number">3</span> ¿Cúando?</h3>
+  <div class="row">
+    <div class="large-8 columns">
+      <div class="field selectize">
+        <%= f.label :cuando, "Fecha y hora" %>
         <%= f.datetime_select :cuando %>
       </div>
-      <div class="field">
-        <%= f.label :imagen do %>
-          Imagen del evento: <i class="redtxt">Rectangular min. 300x180 max. 1MB</i>
-        <% end %>
-        <% if @evento.imagen.present? %>
-          <%= image_tag @evento.imagen_url(:thumb), :class => 'th round' %>
-        <% end %>
-        <br />
-        <%= f.file_field :imagen %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Guardar", :class => "button right success" %>
-      </div>
-    <% end %>
     </div>
+    <div class="large-4 columns">
+      <div class="field selectize">
+        <%= f.label :duracion, "Duración" %>
+        <%= f.time_select :duracion %>
+      </div>
+    </div>
+  </div>
 </div>
+  <div class="actions">
+    <%= f.submit "Guardar", :class => "button right success" %>
+  </div>
+<% end %>
