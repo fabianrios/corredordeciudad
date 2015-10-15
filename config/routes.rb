@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :eventos
+
   resources :recipes, only: [:index, :show, :create, :update, :destroy]
 
   root 'home#index'

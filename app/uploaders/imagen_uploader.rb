@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class ImagenUploader < CarrierWave::Uploader::Base
 
   
   # include CarrierWaveDirect::Uploader
@@ -16,7 +16,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-  storage :s3
+  # storage :s3
   
 
 

@@ -31,7 +31,6 @@ controllers.controller("MdeController", [ '$scope', '$routeParams', '$location',
       # upload on file select or drop
       $scope.upload = (file, recipe) ->
         console.log file, recipe
-        recipe.image = file
         Upload.upload(
           method: 'PUT'
           url: '/recipes/' + recipe.id + '.json'
@@ -39,26 +38,31 @@ controllers.controller("MdeController", [ '$scope', '$routeParams', '$location',
           file: file).progress((evt) ->
           progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
         ).success((data, status, headers, config) ->
+          console.log "success", data
+          $location.path("/recipes/#{data.id}") 
+        ).error (data, status, headers, config) ->
+          console.log "error:", data
+      
+      $scope.upload_new = (file, recipe) ->    
+        Upload.upload(
+          method: 'POST'
+          url: '/recipes.json'
+          fields: recipe
+          file: file).progress((evt) ->
+          progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
+          return
+        ).success((data, status, headers, config) ->
           console.log data
+          $location.path("/recipes/#{data.id}") 
         ).error (data, status, headers, config) ->
           console.log "error:", data
 
       $scope.save = ->
         onError = (_httpResponse)-> flash.error = "Something went wrong"
         if $scope.recipe.id
-          $scope.recipe.$save(
-            ( ()-> $location.path("/recipes/#{$scope.recipe.id}") ),
-            onError)
-          if $scope.file && !$scope.file.$error
-            $scope.upload $scope.file, $scope.recipe
+          $scope.upload $scope.file, $scope.recipe
         else
-          Recipe.create($scope.recipe,
-            ( (newRecipe)->
-              if $scope.file && !$scope.file.$error
-                $scope.upload $scope.file, newRecipe
-              $location.path("/recipes/#{newRecipe.id}") ),
-            onError
-          )
+          $scope.upload_new $scope.file, $scope.recipe
 
       $scope.delete = ->
         $scope.recipe.$delete()
