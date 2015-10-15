@@ -1,7 +1,7 @@
 <%= form_for(@evento) do |f| %>
   <% if @evento.errors.any? %>
     <div id="error_explanation">
-      <h4><%= pluralize(@evento.errors.count, "error") %> prohibited this evento from being saved:</h4>
+      <h2><%= @evento.errors.count > 1 ? "#{@evento.errors.count} Errores no dejaron " : "#{@evento.errors.count} Error no dejó" %> que este evento fuera creado:</h2>
       <ol>
       <% @evento.errors.full_messages.each do |message| %>
         <li><%= message %></li>

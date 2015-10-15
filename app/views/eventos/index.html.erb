@@ -1,6 +1,5 @@
 <div class="row">
   <div class="large-12 columns">
-    <br />
     <h2>Mis eventos</h2>
     <br />
     <ul class="large-block-grid-3 small-block-grid-2">
@@ -8,20 +7,41 @@
         <li>
           <% if evento.imagen.present? %>
             <%= image_tag evento.imagen_url(:big), class: "full" %>
+          <% else %>
+            <%= image_tag "http://placehold.it/350x200?text=sin+imagen", class: "full" %>
           <% end %>
           <h4 class="no-margin"><%= evento.nombre %></h4>
-          <span class="label"><%= evento.cuando %></span>
+          <div class="text-right">
+            <span class="label success"><%= evento.cuando.strftime('%F, %I:%M %p') %></span>
+          </div>
           <div class="desc">
             <%= evento.descripcion.truncate(150, separator: ' ') %>
+            <% if evento.descripcion.length > 150 %>
+              <a href="#" data-reveal-id="modal-<%= evento.id %>"><%= fa_icon "search-plus" %></a>
+              <div id="modal-<%= evento.id %>" class="reveal-modal" data-reveal aria-labelledby="<%= evento.nombre %>" aria-hidden="true" role="dialog">
+                <h2 id="modalTitle"><%= evento.nombre %></h2>
+                <div class="long-desc">
+                  <%= evento.descripcion %>
+                  <hr />
+                  <% if evento.espacio %>
+                    <h3>Necesidades espaciales</h3>
+                    <%= evento.necesidades %>
+                  <% end %>
+                </div>
+                <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+              </div>
+            <% end %>
           </div>
-          <h6 class="subheader no-margin"><%= evento.direccion %>, <%= evento.lugar %></h6>
-          <h6 class="subheader text-center"><%= link_to evento.web %></h6>
+          <h6 class="subheader no-margin"><%= evento.direccion.present? ? evento.direccion : '' %>, <%= evento.lugar.present? ? evento.lugar : '' %></h6>
+          <% if evento.web.present? %>
+            <h6 class="subheader text-center"><%= link_to evento.web %></h6>
+          <% end %>
           <div class="right">
             <%= link_to edit_evento_path(evento), class: "secondary" do %>
-              <%= fa_icon "edit", text: "Editar" %>
+              <%= fa_icon "pencil", text: "Editar" %>
             <% end %>
-            <%= link_to  evento, method: :delete, data: { confirm: 'Are you sure?' }, class: "redtxt" do %>
-              <%= fa_icon "trash", text: "borrar" %>
+            <%= link_to  evento, method: :delete, data: { confirm: '¿Estás seguro quieres borrar permanentemente este evento?' }, class: "redtxt" do %>
+              <%= fa_icon "trash-o", text: "borrar" %>
             <% end %>
           </div>
         </li>

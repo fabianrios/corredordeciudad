@@ -4,7 +4,11 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = Evento.all
+    if current_user.try(:admin?)
+      @eventos = Evento.all
+    else
+      @eventos = Evento.where(:user_id => current_user.id)
+    end
   end
 
   # GET /eventos/1
