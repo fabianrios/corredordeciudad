@@ -44,7 +44,7 @@
 <div id="user_nav">
   <% if user_signed_in? %>
     <div class="pic">
-      <%= image_tag current_user.imagen.present? ? current_user.imagen : "http://placehold.it/70"  %>
+      <%= image_tag current_user.logo.present? ? current_user.logo_url(:thumb) : "http://placehold.it/70"  %>
     </div>
     <div class="info">
       <h5 class="no-margin"><%= current_user.nombre %></h5>
