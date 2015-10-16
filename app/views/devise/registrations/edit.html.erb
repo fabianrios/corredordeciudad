@@ -423,22 +423,6 @@
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Esperando confirmación de: <%= resource.unconfirmed_email %></div>
       <% end %>
-    
-      <!-- <div class="row">
-        <div class="large-6 columns">
-          <div class="field">
-            <% f.label :password, "Contraseña" %> <i>(Dejar en blanco si no lo quieres cambiar)</i>
-            <% f.password_field :password, autocomplete: "off" %>
-          </div>
-        </div>
-
-        <div class="large-6 columns">
-          <div class="field">
-            <% f.label :password_confirmation, "Confirmar contraseña" %>
-            <% f.password_field :password_confirmation, autocomplete: "off" %>
-          </div>
-        </div>
-      </div> -->
         
       <div class="field">
         <%= f.label :imagen do %>

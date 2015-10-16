@@ -5,13 +5,16 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
   
+  realtime_controller({:queue => :redis}) # instruct all requests to enable realtime support via redis
+  
+  
   def realtime_user_id
-    return 42 # if using devise, change this to current_user.id
+    return current_user.id # if using devise, change this to current_user.id
   end
 
   def realtime_server_url
     # point this to your node.js-socket.io-redis/zmq realtime server (you can set this later)
-    return 'http://res.herokuapp.com'
+    return 'http://127.0.0.1:5001'
   end
   
   def configure_permitted_parameters
