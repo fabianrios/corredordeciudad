@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
   end
 
   def realtime_server_url
+    # point this to your node.js-socket.io-redis/zmq realtime server (you can set this later)
     if Rails.env.production?
-      @pipe = 'https://enigmatic-dawn-8387.herokuapp.com/'
+      return 'https://enigmatic-dawn-8387.herokuapp.com/'
     else
-      @pipe = 'http://127.0.0.1:5001'
+      return 'http://127.0.0.1:5001'
     end
-    return @pipe
   end
   
   def configure_permitted_parameters
