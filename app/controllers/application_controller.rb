@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
   
   
   def realtime_user_id
-    return current_user.id # if using devise, change this to current_user.id
+    if current_user.present?
+      return current_user.id # if using devise, change this to current_user.id
+    end
   end
 
   def realtime_server_url
