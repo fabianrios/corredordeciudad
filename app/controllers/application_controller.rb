@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
   
-  realtime_controller({:queue => :redis}) # instruct all requests to enable realtime support via redis
+  # realtime_controller({:queue => :redis}) # instruct all requests to enable realtime support via redis
   
   
   def realtime_user_id
@@ -16,11 +16,11 @@ class ApplicationController < ActionController::Base
 
   def realtime_server_url
     # point this to your node.js-socket.io-redis/zmq realtime server (you can set this later)
-    if Rails.env.production?
-      return 'https://enigmatic-dawn-8387.herokuapp.com/'
-    else
-      return 'http://127.0.0.1:5001'
-    end
+    # if Rails.env.production?
+    #   return 'https://enigmatic-dawn-8387.herokuapp.com/'
+    # else
+    #   return 'http://127.0.0.1:5001'
+    # end
   end
   
   def configure_permitted_parameters

@@ -189,3 +189,72 @@ textarea{
 .default{
   margin-right: 10px;
 }
+
+
+
+//not mine in a millon years
+#logos {
+    width: 100%;
+    background: white;
+    text-align: center;
+    color: #164559;
+    font-size: 0.8em !important;
+    .separar{
+      border-right: 1px solid #164559;
+    }
+}
+
+.tipo_patrocinio {
+    display: inline-block;
+    float: left;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    min-height: 84px;
+    .titulo{
+      text-align: left;
+      font-size: 1.3em;
+      font-weight: bold;
+      padding-bottom: 10px;
+    }
+    .textual{
+      text-align: left;
+      display: table;
+    }
+}
+
+a.patrocinador{
+  padding: 8px 13px;
+}
+
+#patrocinadores .tipo_patrocinio.textual a.patrocinador{
+  padding: 0;
+  color: #164559;
+  display: inline-block;
+}
+
+#patrocinadores .grupo {
+    float: left;
+    padding: 0;
+    min-height: 103px;
+}
+
+#patrocinadores .tipo_patrocinio.col-4 .grupo {
+    vertical-align: top;
+    float: none;
+    display: table-cell;
+}
+
+#patrocinadores .tipo_patrocinio.textual .grupo:nth-of-type(1) {
+    width: 210px;
+}
+
+#patrocinadores .tipo_patrocinio.textual .grupo {
+    display: table-cell;
+    float: none !important;
+    vertical-align: center;
+    padding-right: 20px;
+}
+
+#patrocinadores .tipo_patrocinio.textual .grupo {
+    min-height: auto;
+}
