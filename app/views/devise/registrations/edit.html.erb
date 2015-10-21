@@ -1,3 +1,7 @@
+  <% content_for(:body_attributes) do %>
+    data-no-turbolink="true"
+  <% end %>
+
 <% 
 
 @nororiental = ["El Chagualo",
@@ -382,19 +386,13 @@
       </div>
       
       <div class="field">
-        <%= f.label :comuna, "Nombre de la comuna" %>
-        <% list = @comunas.sort %>
-        <%= f.select :comuna, list %>
-      </div>
-      
-      <div class="field">
         <%= f.label :barrio, "Nombre del barrio" %>
         <%= f.select :barrio, @sectores.sort %>
       </div>
       
       <div class="field">
         <%= f.label :lugar, "Ubicación" %>
-        <%= f.text_field :lugar, :placeholder => "Al lado de la loma de los bernal, frente al aeropuerto etc.." %>
+        <%= f.text_field :lugar, :placeholder => "Al lado de la estación, frente al aeropuerto etc.." %>
       </div>
       
       <div class="field">
@@ -415,9 +413,10 @@
         <%= f.text_field :web %>
       </div>
       
+      <% @categorias = ["sociales", "culturales", "artisticas", "educativas"] %>
       <div class="field">
         <%= f.label :categoria, "¿Su organización pertenece a alguna de estas categorias?" %>
-        <%= f.text_field :categoria %>
+        <%= f.select :categoria, @categorias.sort %>
       </div>
       
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -472,7 +471,7 @@
 <div class="row">
 <div class="large-12 columns">
   <%= link_to "volver", :back, class: "button left" %>
-  <br /><br /><br />
+  <br /><br /><br /><br /><br /><br />
   <hr />
   <h3>Cancelar mi cuenta</h3>
   <div class="row">
