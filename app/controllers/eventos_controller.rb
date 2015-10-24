@@ -1,11 +1,22 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+  before_action :tag_cloud
+  
   # GET /eventos
   # GET /eventos.json
   def index
-    if current_user.try(:admin?)
+    
+    p "params"
+    p params
+    
+    @tags = current_user.tag_counts_on(:tags)
+    if current_user.try(:admin?) && params[:tag]
+      @eventos = Evento.tagged_with(params[:etiqueta])
+    elsif current_user.try(:admin?)
       @eventos = Evento.all
+    elsif params[:tag]
+      @eventos = Evento.where(:user_id => current_user.id).tagged_with(params[:tag])
     else
       @eventos = Evento.where(:user_id => current_user.id)
     end
@@ -70,9 +81,12 @@ class EventosController < ApplicationController
     def set_evento
       @evento = Evento.find(params[:id])
     end
-
+    
+    def tag_cloud
+      @tags = Evento.tag_counts_on(:tags).order('count desc').limit(20)
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params
-      params.require(:evento).permit(:nombre, :lugar, :direccion, :espacio, :necesidades, :descripcion, :web, :cuando, :imagen, :duracion, :user_id)
+      params.require(:evento).permit(:nombre, :lugar, :direccion, :espacio, :necesidades, :descripcion, :web, :cuando, :imagen, :duracion, :user_id, {:tag_list => []})
     end
 end

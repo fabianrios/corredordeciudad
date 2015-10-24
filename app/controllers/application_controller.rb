@@ -24,8 +24,9 @@ class ApplicationController < ActionController::Base
   end
   
   def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password, :nombre, :lugar, :direccion, :telefono, :comuna, :barrio, :categoria, :logo, :web, :imagen, :descripcion, :user_id, :admin) }
-      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :nombre, :lugar, :direccion, :telefono, :comuna, :barrio, :categoria, :logo, :web, :imagen, :descripcion, :user_id, :admin)}
+      # tag_list must be an Array dahh  
+      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password, :nombre, :lugar, :direccion, :telefono, :comuna, :barrio, :categoria, :logo, :web, :imagen, :descripcion, :user_id, :admin, {:tag_list => []}) }
+      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :nombre, :lugar, :direccion, :telefono, :comuna, :barrio, :categoria, :logo, :web, :imagen, :descripcion, :user_id, :admin, {:tag_list => []})}
   end
   
   rescue_from ActiveRecord::RecordNotFound do

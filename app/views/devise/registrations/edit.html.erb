@@ -369,7 +369,8 @@
   <div class="large-4 columns">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
-      <h3><span class="number">1</span> ¿Quiénes somos?</h3>
+      <h4><span class="number">1</span>¿Quiénes somos?</h4>
+      <br />
       <div class="field">
         <%= f.label :nombre, "Nombre de la organización" %>
         <%= f.text_field :nombre %>
@@ -387,9 +388,10 @@
       
       <div class="field">
         <%= f.label :barrio, "Nombre del barrio" %>
-        <%= f.select :barrio, @sectores.sort %>
+        <%= f.select :barrio, @sectores.sort, :class => "mark" %>
+        <br />
       </div>
-      
+      <br />
       <div class="field">
         <%= f.label :lugar, "Ubicación" %>
         <%= f.text_field :lugar, :placeholder => "Al lado de la estación, frente al aeropuerto etc.." %>
@@ -402,20 +404,32 @@
       
     </div>
     <div class="large-8 columns">
-      <h3><span class="number">2</span> ¿Qué hacemos?</h3>
+      <h4><span class="number">2</span> ¿Qué hacemos?</h4>
+      <br />
       <div class="field">
         <%= f.label :descripcion, "¿Cómo cree que su proyecto se articula con el MDE15?" %>
         <%= f.text_area :descripcion %>
       </div>
       
-      <div class="field">
-        <%= f.label :web, "Página web" %>
-        <%= f.text_field :web %>
+      <div class="row">
+        <div class="large-6 columns">
+          <div class="field">
+            <%= f.label :web, "Página web" %>
+            <%= f.text_field :web %>
+          </div>
+        </div>
+        <div class="large-6 columns">
+          <% @tags = User.all.tag_counts_on(:tags) %>
+          <div class="field">
+            <%= f.label :tags, "Etiquetas (palabras clave)" %>
+            <%= f.select :tag_list, options_for_select(@tags, selected: current_user.tag_list), {}, {:multiple => true, :class => "selectize", :style => "width:300px;" } %>
+          </div>
+        </div>
       </div>
       
       <% @categorias = ["sociales", "culturales", "artisticas", "educativas"] %>
       <div class="field">
-        <%= f.label :categoria, "¿Su organización pertenece a alguna de estas categorias?" %>
+        <%= f.label :categoria, "¿Seleccione la categoría a la que perteneces su organización?" %>
         <%= f.select :categoria, @categorias.sort %>
       </div>
       
@@ -450,7 +464,7 @@
         <%= f.password_field :current_password, autocomplete: "off" %>
       </div>
       
-      <div class="field">
+      <div class="field hide">
       <div class="row collapse">
         <div class="large-6 columns"><%= f.label :admin, "¿Hacer este usuario administrador?" %></div>
         <div class="large-6 columns">
@@ -463,15 +477,14 @@
       </div>
     <br />
       <div class="actions">
+        <%= link_to "volver", :back, class: "button left" %>
         <%= f.submit "Actualizar mi información", class: "button success right" %>
       </div>
     <% end %>
 </div>
-
 <div class="row">
 <div class="large-12 columns">
-  <%= link_to "volver", :back, class: "button left" %>
-  <br /><br /><br /><br /><br /><br />
+  <br /><br />
   <hr />
   <h3>Cancelar mi cuenta</h3>
   <div class="row">

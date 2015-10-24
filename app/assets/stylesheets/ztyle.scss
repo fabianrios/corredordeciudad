@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6{
 	}
 }
 
-.selectize{
+.inliner{
 	select{
 		width: auto;
 		padding-right: 20px;
@@ -190,6 +190,12 @@ textarea{
   margin-right: 10px;
 }
 
+.select2-container .select2-search--inline .select2-search__field{
+  margin-bottom: 0;
+  padding: 0;
+  box-shadow:none !important;
+  height: 25px !important;
+}
 
 
 //not mine in a millon years
@@ -199,6 +205,7 @@ textarea{
     text-align: center;
     color: #164559;
     font-size: 0.8em !important;
+    line-height: 14px;
     .separar{
       border-right: 1px solid #164559;
     }
@@ -224,12 +231,21 @@ textarea{
 
 a.patrocinador{
   padding: 8px 13px;
+  &.top_img{
+    img{
+      vertical-align: top;
+    } 
+  }
 }
 
 #patrocinadores .tipo_patrocinio.textual a.patrocinador{
   padding: 0;
   color: #164559;
   display: inline-block;
+  text-align: left;
+  &:after{
+    content: " /";  
+  }
 }
 
 #patrocinadores .grupo {
@@ -245,18 +261,46 @@ a.patrocinador{
 }
 
 #patrocinadores .tipo_patrocinio.textual .grupo:nth-of-type(1) {
-    width: 210px;
+    width: 225px;
 }
 
 #patrocinadores .tipo_patrocinio.textual .grupo {
     display: table-cell;
     float: none !important;
     vertical-align: center;
-    padding-right: 20px;
+    padding-right: 10px;
 }
 
 #patrocinadores .tipo_patrocinio.textual .grupo {
     min-height: auto;
+    text-align: left;
+    a.patrocinador{
+      &:hover{
+        text-decoration: underline;
+      }
+    }
 }
 
 
+span.patrocinador.alcaldia{
+  width: 140px;
+  display: inline-block;
+  text-align: justify;
+}
+
+#patrocinadores .grupo .patrocinador, #patrocinadores .grupo .linea{
+  display: block;
+  padding: 8px 20px;
+}
+
+#patrocinadores .grupo .linea .patrocinador{
+  display: inline-block;
+}
+
+#patrocinadores .linea a.patrocinador{
+  padding: 8px 7px;
+}
+
+#patrocinadores .tipo_patrocinio.textual .grupo:nth-of-type(2){
+  padding-left: 20px;
+}

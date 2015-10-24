@@ -62,6 +62,8 @@ gem 'carrierwave-aws'
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', :require => 'RMagick'
 
+gem 'acts-as-taggable-on', '~> 3.4'
+gem "select2-rails"
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc

@@ -35,17 +35,22 @@
             <% end %>
           </div>
           <h6 class="subheader no-margin"><%= evento.direccion.present? ? evento.direccion : '' %>, <%= evento.lugar.present? ? evento.lugar : '' %></h6>
+          <% if evento.tag_list.present? %>
+            <%= fa_icon "tags" %> <%= raw evento.tag_list.map { |t| link_to t, tag_path(t), :class => 'label gray', "data-filter" => "."+t }.join(' ') %>
+          <% end %>
           <% if evento.web.present? %>
             <h6 class="subheader text-center"><%= link_to evento.web %></h6>
           <% end %>
-          <div class="right">
-            <%= link_to edit_evento_path(evento), class: "secondary" do %>
-              <%= fa_icon "pencil", text: "Editar" %>
-            <% end %>
-            <%= link_to  evento, method: :delete, data: { confirm: '¿Estás seguro quieres borrar permanentemente este evento?' }, class: "redtxt" do %>
-              <%= fa_icon "trash-o", text: "borrar" %>
-            <% end %>
-          </div>
+          <% if current_user.try(:admin) || current_user.id == evento.user.id %>
+            <div class="right">
+              <%= link_to edit_evento_path(evento), class: "secondary" do %>
+                <%= fa_icon "pencil", text: "Editar" %>
+              <% end %>
+              <%= link_to  evento, method: :delete, data: { confirm: '¿Estás seguro quieres borrar permanentemente este evento?' }, class: "redtxt" do %>
+                <%= fa_icon "trash-o", text: "borrar" %>
+              <% end %>
+            </div>
+          <% end %>
         </li>
       <% end %>
     </ul>

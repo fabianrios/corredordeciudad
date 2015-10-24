@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :eventos
+  
+  get '/tags/:tag', to: 'eventos#index', as: :tag
 
   resources :recipes, only: [:index, :show, :create, :update, :destroy]
 

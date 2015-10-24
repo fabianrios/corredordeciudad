@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require select2
 //= require foundation
 //= require angular/angular
 //= require angular-route/angular-route
@@ -24,6 +25,9 @@
 
 $(function(){
 	 $(document).foundation(); 
+	 
+	 $( ".selectize, #tag_list" ).select2({tags:true, language: "es"});
+	 $( ".mark, #user_barrio" ).select2({language: "es"});
 	 
    $("#evento_espacio").each(function(index) {
      if($(this).is(":checked")){

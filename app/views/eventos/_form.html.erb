@@ -11,7 +11,8 @@
   <% end %>
 
 <div class="large-4 columns">
-  <h3><span class="number">1</span> ¿Dónde?</h3>
+  <h4><span class="number">1</span> ¿Dónde?</h4>
+  <br />
   <div class="field">
     <%= f.label :direccion, "Dirección" %>
     <%= f.text_field :direccion, :value => @evento.direccion || current_user.direccion, :placeholder => "Ej: Cra 24 # 32 - 50" %>
@@ -30,7 +31,8 @@
   </div>
 </div>
 <div class="large-8 columns">
-  <h3><span class="number">2</span> ¿Qué?</h3>
+  <h4><span class="number">2</span> ¿Qué?</h4>
+  <br />
   <div class="field">
     <%= f.label :nombre, "Nombre del evento" %>
     <%= f.text_field :nombre %>
@@ -39,9 +41,20 @@
     <%= f.label :descripcion, "Descripción" %>
     <%= f.text_area :descripcion %>
   </div>
-  <div class="field">
-    <%= f.label :web, "Página web del evento" %>
-    <%= f.text_field :web, :value => @evento.web || current_user.web, :placeholder => "Ej: http://www.paginawebdelevento.com" %>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="field">
+        <%= f.label :web, "Página web del evento" %>
+        <%= f.text_field :web, :value => @evento.web || current_user.web, :placeholder => "Ej: http://www.paginawebdelevento.com" %>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <% @tags = Evento.all.tag_counts_on(:tags) %>
+      <div class="field">
+        <%= f.label :tags, "Etiquetas (palabras clave)" %>
+        <%= f.select :tag_list, options_for_select(@tags, selected: @evento.tag_list), {}, {:multiple => true, :class => "selectize", :style => "width:300px;" } %>
+      </div>
+    </div>
   </div>
   <div class="field hide">
     <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -57,17 +70,18 @@
     <%= f.file_field :imagen %>
   </div>
   <br />
-  <h3><span class="number">3</span> ¿Cúando?</h3>
+  <h4><span class="number">3</span> ¿Cúando?</h4>
+  <br />
   <div class="row">
     <div class="large-8 columns">
-      <div class="field selectize">
+      <div class="field inliner">
         <%= f.label :cuando, "Fecha y hora" %>
         <%= f.datetime_select :cuando %>
       </div>
     </div>
     <div class="large-4 columns">
-      <div class="field selectize">
-        <%= f.label :duracion, "Duración" %>
+      <div class="field inliner">
+        <%= f.label :duracion, "Duración (hh:mm)" %>
         <%= f.time_select :duracion %>
       </div>
     </div>
