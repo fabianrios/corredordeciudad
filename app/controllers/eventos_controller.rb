@@ -7,12 +7,9 @@ class EventosController < ApplicationController
   # GET /eventos.json
   def index
     
-    p "params"
-    p params
-    
     @tags = current_user.tag_counts_on(:tags)
     if current_user.try(:admin?) && params[:tag]
-      @eventos = Evento.tagged_with(params[:etiqueta])
+      @eventos = Evento.tagged_with(params[:tag])
     elsif current_user.try(:admin?)
       @eventos = Evento.all
     elsif params[:tag]
@@ -87,6 +84,6 @@ class EventosController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params
-      params.require(:evento).permit(:nombre, :lugar, :direccion, :espacio, :necesidades, :descripcion, :web, :cuando, :imagen, :duracion, :user_id, {:tag_list => []})
+      params.require(:evento).permit(:nombre, :lugar, :direccion, :espacio, :necesidades, :descripcion, :web, :cuando, :imagen, :duracion, :user_id, :publish, {:tag_list => []})
     end
 end
