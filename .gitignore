@@ -46,4 +46,4 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
-.env
+.envconfig/initializers/fog.rb
