@@ -27,6 +27,7 @@ pickle-email-*.html
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
+config/initializers/fog.rb
 config/secrets.yml
 
 ## Environment normalisation:
@@ -46,5 +47,4 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
-.envconfig/initializers/fog.rb
 .env
