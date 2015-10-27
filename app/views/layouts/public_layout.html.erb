@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "MDE15" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.1/mapbox-gl.css' rel='stylesheet' />
+		<link href='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.1/mapbox-gl.js'></script>
+    <%= csrf_meta_tags %>
+		
+	  <!-- required: realtime support framework -->
+	  <%= realtime_support %>
+	  <!-- optional: message_handler dequeues realtime messages into Backbone.js style events -->
+	  <%= realtime_message_handler %>
+	  <!-- optional: message_console_logger listens or dequeues realtime messages to the browser console -->
+	  <%= realtime_message_console_logger %>
+  </head>
+
+  <body>
+	
+		<div class="main"><%= yield %></div>
+    <script>
+		// Provide your access token
+		mapboxgl.accessToken = 'pk.eyJ1IjoiZmFiaWFucmlvcyIsImEiOiJjaWc3ZDFhMjMwczFvdjRrcHF4bXliMzNoIn0.PTi-JKyYhEaQknlR6iGCoA';
+		// Create a map in the div #map
+		var map = new mapboxgl.Map({
+		    container: 'map', // container id
+		    style: 'mapbox://styles/mapbox/dark-v8',
+		    center: [-75.58,6.25], // starting position
+		    zoom: 12.2, // starting zoom
+				bearing: 90
+		});
+		
+		var data_map = {"body":{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-75.5819034576416,6.2406470719454]},"properties":{"title":"Proyecto de vivienda","description":"1714 14th St NW, Washington DC","marker-color":"#fa0","marker-size":"large","marker-symbol":"star"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-75.6189823150635,6.25131222134788]},"properties":{"title":"Comunidades recilentes","marker-color":"#7ec9b1","marker-size":"large","marker-symbol":"star"}}]}};
+		
+		map.on('style.load', function (e) {
+			
+			window.setInterval(function() {
+		    
+				$.ajax({
+				    type: 'GET',
+				    url: '/pages/index.json',
+				    dataType: 'json',
+				    success: function(response){
+								console.log("response",response.body);
+								data_map = response.body;
+								
+							  map.addSource("markers", {
+							       "type": "geojson",
+							       "data": data_map
+							   });
+			
+							  map.addLayer({
+							    "id": "markers",
+							    "type": "symbol",
+							    "source": "markers",
+							    "layout": {
+										   "icon-image": "default_marker",
+							        "text-field": "{title}",
+							        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+							        "text-offset": [0, 0.6],
+							        "text-anchor": "top"
+							    },
+							    "paint": {
+							        "text-size": 15,
+											 "fill-color": "#ffffff",
+											 "line-color": "#ffffff"
+							    }
+					  		});
+								
+							  // map.flyTo({
+							  //       center: [-75.5819034576416,6.2406470719454],
+							  // 									    zoom: 15.2, // starting zoom
+							  // 											bearing: 90,
+							  //       speed: 1, // make the flying slow
+							  //       curve: 1, // change the speed at which it zooms out
+							  //       easing: function (t) {
+							  //           return t;
+							  //       }
+							  //   });
+								
+				    },
+				    error: function(){
+							data_map = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-75.5819034576416,6.2406470719454]},"properties":{"title":"Proyecto de vivienda","description":"1714 14th St NW, Washington DC","marker-color":"#fa0","marker-size":"large","marker-symbol":"star"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-75.6189823150635,6.25131222134788]},"properties":{"title":"Comunidades recilentes","marker-color":"#7ec9b1","marker-size":"large","marker-symbol":"star"}}]};
+							console.log("fail");
+				    }
+				});// AJAX
+				
+			}, 5000);
+			
+		// var tooltip = new mapboxgl.Popup()
+		//   .setLngLat(e.lngLat)
+		//   .setHTML("<h1>Hello World!</h1>")
+		//   .addTo(map);
+
+		});
+			
+
+		
+		</script>
+  </body>
+</html>

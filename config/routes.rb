@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :show, :create, :update, :destroy]
 
   root 'eventos#index'
+  
+  get "/pages/:page" => "pages#show"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

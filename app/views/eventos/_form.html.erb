@@ -43,6 +43,20 @@
       </div>
     </div>
   </div>
+  <div class="row collapse">
+    <div class="large-6 columns">
+      <div class="field">
+        <%= f.label :lat, "latitud" %>
+        <div class="minimize"><%= f.text_field :lat %></div>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class="field">
+        <%= f.label :long, "longitud" %>
+        <div class="minimize"><%= f.text_field :long %></div>
+      </div>
+    </div>
+  </div>
   <% end %>
   <div class="field">
     <%= f.label :nombre, "Nombre del evento" %>
