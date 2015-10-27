@@ -14,12 +14,25 @@
 	color: #fff;
 }
 
+.maxh{
+  max-height: 250px;
+  overflow: hidden;
+}
+
 .no-margin{
 	margin: 0;
 }
 
 .capitalize{
   text-transform: capitalize;
+}
+
+.inline{
+  margin-bottom: 0;
+  li{
+    display: inline;
+    margin-right:5px;
+  }
 }
 
 .redtxt{
@@ -205,6 +218,21 @@ textarea{
 .mapboxgl-ctrl-group > button{
   margin: 0;
   color: #000;
+}
+
+#features {
+  display: none;
+  position: absolute;
+  padding: 20px;
+  top: 10px;
+  right: 10px;
+  width: auto;
+  max-width: 350px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.image_map{
+  margin:10px 0;
 }
 
 //not mine in a millon years

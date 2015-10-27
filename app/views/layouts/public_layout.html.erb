@@ -26,82 +26,123 @@
 	
 		<div class="main"><%= yield %></div>
     <script>
+		
+		var museo = [-75.571529,6.252187];
 		// Provide your access token
 		mapboxgl.accessToken = 'pk.eyJ1IjoiZmFiaWFucmlvcyIsImEiOiJjaWc3ZDFhMjMwczFvdjRrcHF4bXliMzNoIn0.PTi-JKyYhEaQknlR6iGCoA';
 		// Create a map in the div #map
 		var map = new mapboxgl.Map({
 		    container: 'map', // container id
 		    style: 'mapbox://styles/mapbox/dark-v8',
-		    center: [-75.58,6.25], // starting position
+		    center: museo, // starting position at the museum
 		    zoom: 12.2, // starting zoom
 				bearing: 90
 		});
 		
-		var data_map = {"body":{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-75.5819034576416,6.2406470719454]},"properties":{"title":"Proyecto de vivienda","description":"1714 14th St NW, Washington DC","marker-color":"#fa0","marker-size":"large","marker-symbol":"star"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-75.6189823150635,6.25131222134788]},"properties":{"title":"Comunidades recilentes","marker-color":"#7ec9b1","marker-size":"large","marker-symbol":"star"}}]}};
+		var url = 'http://localhost:3000/pages/index.json';
+		var source = new mapboxgl.GeoJSONSource({
+		    data: url
+		});
+		window.setInterval(function() {
+		    source.setData(url);
+				// console.log("source",source);
+		}, 5000);
 		
+
 		map.on('style.load', function (e) {
 			
+	 		map.setLayoutProperty('country-label-lg', 'text-field', '{name_' + 'es' + '}');
+	 		map.setPaintProperty('water', 'fill-color', '#5796e5');
+			
 			window.setInterval(function() {
-		    
-				$.ajax({
-				    type: 'GET',
-				    url: '/pages/index.json',
-				    dataType: 'json',
-				    success: function(response){
-								console.log("response",response.body);
-								data_map = response.body;
-								
-							  map.addSource("markers", {
-							       "type": "geojson",
-							       "data": data_map
-							   });
-			
-							  map.addLayer({
-							    "id": "markers",
-							    "type": "symbol",
-							    "source": "markers",
-							    "layout": {
-										   "icon-image": "default_marker",
-							        "text-field": "{title}",
-							        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-							        "text-offset": [0, 0.6],
-							        "text-anchor": "top"
-							    },
-							    "paint": {
-							        "text-size": 15,
-											 "fill-color": "#ffffff",
-											 "line-color": "#ffffff"
-							    }
-					  		});
-								
-							  // map.flyTo({
-							  //       center: [-75.5819034576416,6.2406470719454],
-							  // 									    zoom: 15.2, // starting zoom
-							  // 											bearing: 90,
-							  //       speed: 1, // make the flying slow
-							  //       curve: 1, // change the speed at which it zooms out
-							  //       easing: function (t) {
-							  //           return t;
-							  //       }
-							  //   });
-								
-				    },
-				    error: function(){
-							data_map = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-75.5819034576416,6.2406470719454]},"properties":{"title":"Proyecto de vivienda","description":"1714 14th St NW, Washington DC","marker-color":"#fa0","marker-size":"large","marker-symbol":"star"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-75.6189823150635,6.25131222134788]},"properties":{"title":"Comunidades recilentes","marker-color":"#7ec9b1","marker-size":"large","marker-symbol":"star"}}]};
-							console.log("fail");
-				    }
-				});// AJAX
-				
+				demo();
 			}, 5000);
+		
+			function demo(){
+				console.log("running");
+				map.featuresIn([[10, 20], [1280, 900]],{ layer: 'markers' },
+				function(err, features) {
+					if (err) throw err;
+				  console.log(features);
+				});
+			}
+
+			var where = [];
+			map.on('click', function (e) {
+				console.log(e.point);
+			  map.featuresAt(e.point, {layer: 'markers', radius: 10, includeGeometry: true}, function (err, features) {
+		        if (err) throw err;
+		        if (features.length) {
+		            // Get coordinates from the symbol and center the map on those coordinates
+								where = features[0].geometry.coordinates;
+								var new_coord = [];
+								new_coord.push(where[0]);
+								new_coord.push(where[1]-0.005);
+								
+		            map.flyTo({
+									center: new_coord,
+									zoom: 14,
+									speed: 0.7,
+								  curve: 1
+								});
+								features[0].properties.tag_list
+								
+								var tags = "";
+								if (features[0].properties.tag_list.length > 0) {
+									features[0].properties.tag_list.forEach(function(entry) {
+										tags = tags + "<li><span class='label secondary'>"+entry+"</li>";
+									});
+									tags = "<li><i class='fa fa-tags fa-flip-horizontal'></i></li>"+tags;
+								}
+								
+								var html = "<h3 class='capitalize'>"+features[0].properties.title+"</h3>"+"<div class='text-right'><span class='label success'>"+features[0].properties.cuando+"</span></div><div class='image_map'><img src='"+features[0].properties.imagen+"' /></div>"+"<p class='no-margin maxh'>"+features[0].properties.description+"</p><ul class='inline no-bullet'>"+tags+"</ul><h6>"+features[0].properties.direccion+"</h6>"+"<div class='text-center'><a>"+features[0].properties.web+"</a></div>";
+								$('#features').show();
+								document.getElementById('features').innerHTML = html;
+								setTimeout(function() {
+									$('#features').hide();
+				          map.flyTo({
+										center: museo, 
+										zoom: 12.2,
+										speed: 1,
+									  curve: 1
+									});
+								}, 12000);
+		        }
+		    });
+			});
 			
-		// var tooltip = new mapboxgl.Popup()
-		//   .setLngLat(e.lngLat)
-		//   .setHTML("<h1>Hello World!</h1>")
-		//   .addTo(map);
+			// Use the same approach as above to indicate that the symbols are clickable
+			// by changing the cursor style to 'pointer'.
+			map.on('mousemove', function (e) {
+			    map.featuresAt(e.point, {layer: 'markers', radius: 10}, function (err, features) {
+			        if (err) throw err;
+			        map.getCanvas().style.cursor = features.length ? "pointer" : "";
+			    });
+			});
+
+			map.addSource('markers', source);
+
+		  map.addLayer({
+		    "id": "markers",
+		    "type": "symbol",
+		    "source": "markers",
+				"interactive": true,
+		    "layout": {
+					  "icon-image": "default_marker",
+		        "text-field": "{title}",
+		        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+		        "text-offset": [0, 1.5],
+						"text-size": 13,
+		        "text-anchor": "top",
+						"text-optional": true
+		    },
+		    "paint": {
+						"text-color": "#cccccc"
+		    }
+  		}); // addLayers
 
 		});
 			
-
 		
 		</script>
   </body>
