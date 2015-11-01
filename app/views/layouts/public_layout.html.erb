@@ -95,7 +95,14 @@
 									tags = "<li><i class='fa fa-tags fa-flip-horizontal'></i></li>"+tags;
 								}
 								
-								var html = "<h3 class='capitalize'>"+features[0].properties.title+"</h3>"+"<div class='text-right'><span class='label success'>"+features[0].properties.cuando+"</span></div><div class='image_map'><img src='"+features[0].properties.imagen+"' /></div>"+"<p class='no-margin maxh'>"+features[0].properties.description+"</p><ul class='inline no-bullet'>"+tags+"</ul><h6>"+features[0].properties.direccion+"</h6>"+"<div class='text-center'><a>"+features[0].properties.web+"</a></div>";
+								var html = "<h3 class='capitalize'>"+features[0].properties.title+"</h3>"+"<div class='text-right'><span class='label success'>"+features[0].properties.cuando+"</span></div><div class='image_map'><img src='"+features[0].properties.imagen+"' /></div>"+"<p class='no-margin maxh'>"+features[0].properties.description+"</p><ul class='inline no-bullet'>"+tags+"</ul>"+"<div class='text-center'><a>"+features[0].properties.web+"</a></div>";
+								
+		            var tooltip = new mapboxgl.Popup()
+		                .setLngLat(features[0].geometry.coordinates)
+		                .setHTML('<img class="logo" src="'+features[0].properties.user.logo.thumb.url+'" /><h5>' + features[0].properties.user.nombre + '</h5><h6 class="no-margin">' + features[0].properties.user.lugar + '</h6 class="no-margin"><h6>' + features[0].properties.user.direccion + '</h6 class="no-margin"><h6>' + features[0].properties.user.telefono + '</h6><div class="text-center"><a>' + features[0].properties.user.web + '</a></div>')
+		                .addTo(map);
+								
+								
 								$('#features').show();
 								document.getElementById('features').innerHTML = html;
 								setTimeout(function() {
