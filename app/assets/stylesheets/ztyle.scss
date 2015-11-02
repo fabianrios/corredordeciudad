@@ -235,14 +235,19 @@ textarea{
   right: 10px;
   width: auto;
   max-width: 350px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   p{
     font-size: 13px !important;
+	min-height: 300px;
+	overflow: hidden;
   }
 }
 
 .image_map{
-  margin:10px 0;
+  margin-bottom:10px;
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
 }
 
 .mapboxgl-popup-close-button{
@@ -260,11 +265,11 @@ textarea{
 }
 
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip{
-  border-top-color:rgba(white, .7) !important;
+  border-top-color:rgba(white, .9) !important;
 }
 
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip{
-  border-bottom-color:rgba(white, .7) !important;
+  border-bottom-color:rgba(white, .9) !important;
 }
 
 //not mine in a millon years
