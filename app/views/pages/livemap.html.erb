@@ -125,6 +125,9 @@
 							if (i < all_pos.length) {
 								myLoop();
 							}else{
+								
+								console.log("esperando:", tiempo);
+								setTimeout(function () {
 								$('#features').hide();
 								map.flyTo({
 									center: museo,
@@ -132,8 +135,8 @@
 									speed: 0.7,
 								  curve: 1
 								});
-
-								console.log("esperando:", tiempo);
+								},intervalo);
+								
 								setTimeout(function () {
 								},tiempo);
 							}
