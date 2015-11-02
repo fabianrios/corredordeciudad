@@ -36,7 +36,7 @@
 			map.setPaintProperty('landuse_industrial', 'fill-color', '#b742c5');
 			map.setPaintProperty('landuse_wood', 'fill-color', '#02140b');
 			map.setPaintProperty('hillshade_highlight_bright', 'fill-color', '#70A93F');
-			map.setPaintProperty('road-trunk', 'line-color', '#f9f0a4');
+			map.setPaintProperty('road-trunk', 'line-color', '#96926c');
 			map.setPaintProperty('road-street-low-zoom', 'line-color', '#2d2c26');
 			
 			
@@ -125,7 +125,7 @@
 								
 							console.log("added: ", typeof tooltip);
 								
-							var sidepost = '<div class="image_map"><img src="'+all_pos[i].properties.imagen+'" /></div><h4>'+ all_pos[i].properties.title +'</h4><p class="no-margin maxh">'+ all_pos[i].properties.description+'</p><hr /><h3>Organiza:</h3><div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h5>' + all_pos[i].properties.user.nombre + '</h5><h6 class="no-margin">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + all_pos[i].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>';
+							var sidepost = '<div class="image_map"><img src="'+all_pos[i].properties.imagen+'" /></div><h4>'+ all_pos[i].properties.title +'</h4><p class="no-margin maxh">'+ all_pos[i].properties.description+'</p><hr /><h5>Organiza:</h5><div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h6 class="no-margin">' + all_pos[i].properties.user.nombre + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + all_pos[i].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>';
 							$('#features').show();
 							document.getElementById('features').innerHTML = sidepost;
 							
