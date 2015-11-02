@@ -236,6 +236,9 @@ textarea{
   width: auto;
   max-width: 350px;
   background: rgba(255, 255, 255, 0.8);
+  p{
+    font-size: 13px !important;
+  }
 }
 
 .image_map{
@@ -249,9 +252,6 @@ textarea{
 
 .mapboxgl-popup-content{
   background: rgba(white, .9) !important;
-  p{
-    font-size: 13px !important;
-  }
   max-width: 350px;
   img{
     width: 100%;
