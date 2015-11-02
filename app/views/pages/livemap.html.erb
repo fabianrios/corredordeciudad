@@ -31,9 +31,17 @@
 			
 	 		map.setLayoutProperty('country-label-lg', 'text-field', '{name_' + 'es' + '}');
 	 		map.setPaintProperty('water', 'fill-color', '#5796e5');
+			map.setPaintProperty('waterway', 'line-color', '#2c4c8c');
+			map.setPaintProperty('landuse_park', 'fill-color', '#253913');
+			map.setPaintProperty('landuse_industrial', 'fill-color', '#b742c5');
+			map.setPaintProperty('landuse_wood', 'fill-color', '#02140b');
+			map.setPaintProperty('hillshade_highlight_bright', 'fill-color', '#70A93F');
+			map.setPaintProperty('road-trunk', 'line-color', '#f9f0a4');
+			map.setPaintProperty('road-street-low-zoom', 'line-color', '#2d2c26');
+			
+			
 
 			map.addSource('markers', source);
-
 		  map.addLayer({
 		    "id": "markers",
 		    "type": "symbol",
@@ -91,7 +99,7 @@
 							
 							map.flyTo({
 								center: new_coord,
-								zoom: 13.2,
+								zoom: 12.7,
 								speed: 1
 							});
 							
@@ -103,7 +111,7 @@
 							  tags = "<li><i class='fa fa-tags fa-flip-horizontal'></i></li>"+tags;
 							}
 
-							var html = "<h5 class='capitalize'>"+all_pos[i].properties.title+"</h5>"+"<div class='text-right'><span class='label success'>"+all_pos[i].properties.cuando+"</span></div><div class='image_map'><img src='"+all_pos[i].properties.imagen+"' /></div>"+"<p class='no-margin maxh'>"+all_pos[i].properties.description+"</p><ul class='inline no-bullet'>"+tags+"</ul>"+"<div class='text-center'><a>"+all_pos[i].properties.web+"</a></div>";
+							var html = "<h5 class='capitalize'>"+all_pos[i].properties.title+"</h5>"+"<div class='text-right'><span class='label success'>"+all_pos[i].properties.cuando+"</span></div><ul class='inline no-bullet'>"+tags+"</ul>"+"<div class='text-center'><a>"+all_pos[i].properties.web+"</a></div>"+"<div class='text-center'>"+all_pos[i].properties.direccion+"</div>";
 							
 							var tooltip = new mapboxgl.Popup({closeButton: false})
 								.setLngLat(all_pos[i].geometry.coordinates)
@@ -117,7 +125,7 @@
 								
 							console.log("added: ", typeof tooltip);
 								
-							var sidepost = '<div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h5>' + all_pos[i].properties.user.nombre + '</h5><h6 class="no-margin">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + all_pos[i].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>';
+							var sidepost = '<div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h5>' + all_pos[i].properties.user.nombre + '</h5><h6 class="no-margin">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + all_pos[i].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div><hr /><div class="image_map"><img src="'+all_pos[i].properties.imagen+'" /></div>'+'<p class="no-margin maxh">'+ all_pos[i].properties.description+'</p>';
 							$('#features').show();
 							document.getElementById('features').innerHTML = sidepost;
 							
