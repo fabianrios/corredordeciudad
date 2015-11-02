@@ -21,7 +21,9 @@
 
 .logo{
   float: left;
-  margin: 5px 20px 100px 5px;
+  margin: 5px;
+  min-height: 100px;
+  min-width: 70px;
 }
 
 .no-margin{
@@ -238,6 +240,27 @@ textarea{
 
 .image_map{
   margin:10px 0;
+}
+
+.mapboxgl-popup-close-button{
+  color: gray !important;
+  padding: 5px 10px !important;
+}
+
+.mapboxgl-popup-content{
+  background: rgba(white, .7) !important;
+  max-width: 300px;
+  img{
+    width: 100%;
+  }
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip{
+  border-top-color:rgba(white, .7) !important;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip{
+  border-bottom-color:rgba(white, .7) !important;
 }
 
 //not mine in a millon years

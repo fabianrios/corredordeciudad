@@ -1,0 +1,151 @@
+<div id="map" style="width:100%;height:750px;position:absolute;top:0;"></div>
+<div id='features'></div>
+
+    <script>
+		
+		var museo = [-75.571529,6.252187];
+		var tiempo = 20000;
+		var intervalo = 5000;
+		// Provide your access token
+		mapboxgl.accessToken = 'pk.eyJ1IjoiZmFiaWFucmlvcyIsImEiOiJjaWc3ZDFhMjMwczFvdjRrcHF4bXliMzNoIn0.PTi-JKyYhEaQknlR6iGCoA';
+		// Create a map in the div #map
+		var map = new mapboxgl.Map({
+		    container: 'map', // container id
+		    style: 'mapbox://styles/mapbox/dark-v8',
+		    center: museo, // starting position at the museum
+		    zoom: 12.2, // starting zoom
+				bearing: 90
+		});
+		
+		var url = '/pages/index.json';
+		var source = new mapboxgl.GeoJSONSource({
+		    data: url
+		});
+		window.setInterval(function() {
+		    source.setData(url);
+				// console.log("source",source);
+		}, intervalo);
+		
+
+		map.on('style.load', function (e) {
+			
+	 		map.setLayoutProperty('country-label-lg', 'text-field', '{name_' + 'es' + '}');
+	 		map.setPaintProperty('water', 'fill-color', '#5796e5');
+
+			map.addSource('markers', source);
+
+		  map.addLayer({
+		    "id": "markers",
+		    "type": "symbol",
+		    "source": "markers",
+				"interactive": true,
+		    "layout": {
+					  "icon-image": "default_marker",
+		        "text-field": "{title}",
+		        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+		        "text-offset": [0, 1.5],
+						"text-size": 13,
+		        "text-anchor": "top",
+						"text-optional": true
+		    },
+		    "paint": {
+						"text-color": "#cccccc"
+		    }
+  		}); // addLayers
+			
+			var time_map = 45000;
+			var small_time = 5000;
+			window.setInterval(function() {
+				demo();
+				console.log("corrio la funcion primaria");
+			}, time_map);
+		  
+			var all_pos = {};
+			function demo(){
+        
+        //ajax request 
+				$.ajax({
+				  url: "/pages/index.json",
+				}).done(function(data) {
+					all_pos = data.features
+					time_map = (all_pos.length*intervalo)+tiempo;
+					small_time = (time_map-tiempo)/all_pos.length;
+					console.log(time_map, small_time);
+				}).fail(function(data){
+					console.log(data);
+				});
+        //ajax request 
+				
+				var i = 0;
+				function myLoop () {
+					 
+				   setTimeout(function () {
+							
+							console.log(i, "of:", all_pos.length, all_pos[i].geometry.coordinates);
+							
+							var where = all_pos[i].geometry.coordinates;
+							
+							var new_coord = [];
+							new_coord.push(where[0]);
+							new_coord.push(where[1]-0.007);
+							
+							map.flyTo({
+								center: new_coord,
+								zoom: 14,
+								speed: 1
+							});
+							
+							var tags = "";
+							if (all_pos[i].properties.tag_list.length > 0) {
+							    all_pos[i].properties.tag_list.forEach(function(entry) {
+							    tags = tags + "<li><span class='label secondary'>"+entry+"</li>";
+							  });
+							  tags = "<li><i class='fa fa-tags fa-flip-horizontal'></i></li>"+tags;
+							}
+
+							var html = "<h4 class='capitalize'>"+all_pos[i].properties.title+"</h4>"+"<div class='text-right'><span class='label success'>"+all_pos[i].properties.cuando+"</span></div><div class='image_map'><img src='"+all_pos[i].properties.imagen+"' /></div>"+"<p class='no-margin maxh'>"+all_pos[i].properties.description+"</p><ul class='inline no-bullet'>"+tags+"</ul>"+"<div class='text-center'><a>"+all_pos[i].properties.web+"</a></div>";
+							
+							var tooltip = new mapboxgl.Popup({closeButton: false})
+								.setLngLat(all_pos[i].geometry.coordinates)
+								.setHTML(html)
+								.addTo(map);
+							
+							setTimeout(function () {
+								tooltip.remove(map);
+							},intervalo);
+							
+								
+							console.log("added: ", typeof tooltip);
+								
+							var sidepost = '<div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h5>' + all_pos[i].properties.user.nombre + '</h5><h6 class="no-margin">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + all_pos[i].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>';
+							$('#features').show();
+							document.getElementById('features').innerHTML = sidepost;
+							
+							i++;
+							if (i < all_pos.length) {
+								myLoop();
+							}else{
+								$('#features').hide();
+								map.flyTo({
+									center: museo,
+									zoom: 12.2,
+									speed: 0.7,
+								  curve: 1
+								});
+
+								console.log("esperando:", tiempo);
+								setTimeout(function () {
+								},tiempo);
+							}
+					},intervalo)
+				}
+
+				myLoop(all_pos);//  start the loop
+
+			}
+			
+
+		});
+			
+		
+		</script>
