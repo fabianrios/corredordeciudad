@@ -11,7 +11,7 @@
 		    container: 'map', // container id
 		    style: 'mapbox://styles/mapbox/dark-v8',
 		    center: museo, // starting position at the museum
-		    zoom: 12.2, // starting zoom
+		    zoom: 12, // starting zoom
 				bearing: 90
 		});
 		
@@ -61,7 +61,7 @@
 								
 								var html = "<h3 class='capitalize'>"+features[0].properties.title+"</h3>"+"<div class='text-right'><span class='label success'>"+features[0].properties.cuando+"</span></div><div class='image_map'><img src='"+features[0].properties.imagen+"' /></div>"+"<p class='no-margin maxh'>"+features[0].properties.description+"</p><ul class='inline no-bullet'>"+tags+"</ul>"+"<div class='text-center'><a>"+features[0].properties.web+"</a></div>";
 								
-		            var tooltip = new mapboxgl.Popup({closeButton: false})
+		            var tooltip = new mapboxgl.Popup()
 		                .setLngLat(features[0].geometry.coordinates)
 										.setHTML('<div class="logo"><img src="'+features[0].properties.user.logo.thumb.url+'" /></div><h5>' + features[0].properties.user.nombre + '</h5><h6 class="no-margin">' + features[0].properties.user.lugar + '</h6><h6 class="no-margin">' + features[0].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + features[0].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + features[0].properties.user.telefono + '</span></div></div>')
 		                .addTo(map);
@@ -73,7 +73,7 @@
 									$('#features').hide();
 				          map.flyTo({
 										center: museo, 
-										zoom: 12.2,
+										zoom: 12,
 										speed: 1,
 									  curve: 1
 									});
@@ -112,73 +112,6 @@
 						"text-color": "#cccccc"
 		    }
   		}); // addLayers
-			
-			window.setInterval(function() {
-				demo();
-			}, 30000);
-		  
-			var all_pos = {};
-			function demo(){
-				$.ajax({
-				  url: "/pages/index.json",
-				}).done(function(data) {
-					all_pos = data.features
-				}).fail(function(data){
-					console.log(data);
-				});
-
-				
-				var i = 0;
-
-				function myLoop () {
-					 $('#features').hide();
-				   setTimeout(function () {
-				      console.log(i, "of:", all_pos.length, all_pos[i].geometry.coordinates);
-							
-							var where = all_pos[i].geometry.coordinates;
-							
-							var new_coord = [];
-							new_coord.push(where[0]);
-							new_coord.push(where[1]-0.005);
-							
-							map.flyTo({
-								center: new_coord,
-								zoom: 14,
-								speed: 0.7,
-							  curve: 1
-							});
-							
-		          var tooltip = new mapboxgl.Popup({closeButton: false})
-		              .setLngLat(all_pos[i].geometry.coordinates)
-									.setHTML('<div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h5>' + all_pos[i].properties.user.nombre + '</h5><h6 class="no-margin">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + all_pos[i].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>')
-		              .addTo(map);
-									
-							var tags = "";
-							if (all_pos[i].properties.tag_list.length > 0) {
-									all_pos[i].properties.tag_list.forEach(function(entry) {
-									tags = tags + "<li><span class='label secondary'>"+entry+"</li>";
-								});
-								tags = "<li><i class='fa fa-tags fa-flip-horizontal'></i></li>"+tags;
-							}
-						
-							var html = "<h3 class='capitalize'>"+all_pos[i].properties.title+"</h3>"+"<div class='text-right'><span class='label success'>"+all_pos[i].properties.cuando+"</span></div><div class='image_map'><img src='"+all_pos[i].properties.imagen+"' /></div>"+"<p class='no-margin maxh'>"+all_pos[i].properties.description+"</p><ul class='inline no-bullet'>"+tags+"</ul>"+"<div class='text-center'><a>"+all_pos[i].properties.web+"</a></div>";
-							$('#features').show();
-							document.getElementById('features').innerHTML = html;	
-							
-				      i++;
-				      if (i < all_pos.length) {
-				         myLoop();
-				      }
-				   }, 5000)
-				}
-
-				myLoop(all_pos);                      //  start the loop
-				
-				// map.featuresAt([680,512], {layer: 'markers', radius: 500}, function(err, features) {
-// 					if (err) throw err;
-// 				  console.log(features);
-// 				});
-			}
 			
 
 		});
