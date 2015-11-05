@@ -1,3 +1,4 @@
+<a href="/pages/explorer" class="button small left" style="z-index:99999;">Volver</a>
 <div id="map" style="width:100%;height:750px;position:absolute;top:0;"></div>
 <div id='features'></div>
 
@@ -38,7 +39,6 @@
 
 			var where = [];
 			map.on('click', function (e) {
-				$('#features').hide();
 				console.log(e.point);
 			  map.featuresAt(e.point, {layer: 'markers', radius: 10, includeGeometry: true}, function (err, features) {
 		        if (err) throw err;
@@ -50,11 +50,10 @@
 								new_coord.push(where[0]);
 								new_coord.push(where[1]-0.005);
 								
-		            map.flyTo({
+			          map.flyTo({
 									center: new_coord,
-									zoom: 14,
-									speed: 0.7,
-								  curve: 1
+									zoom: 12.7,
+									speed: 0.8
 								});
 								
 								var tags = "";
@@ -65,16 +64,27 @@
 									tags = "<li><i class='fa fa-tags fa-flip-horizontal'></i></li>"+tags;
 								}
 								
-								var html = "<h3 class='capitalize'>"+features[0].properties.title+"</h3>"+"<div class='text-right'><span class='label success'>"+features[0].properties.cuando+"</span></div><div class='image_map'><img src='"+features[0].properties.imagen+"' /></div>"+"<p class='no-margin maxh'>"+features[0].properties.description+"</p><ul class='inline no-bullet'>"+tags+"</ul>"+"<div class='text-center'><a>"+features[0].properties.web+"</a></div>";
+								var html = "<h5 class='capitalize'>"+features[0].properties.title+"</h5>"+"<div class='text-center'><span class='label success'>"+features[0].properties.cuando+"</span></div><div class='text-center'><a>"+features[0].properties.web+"</a></div>"+"<div class='text-center'>"+features[0].properties.direccion+"</div><ul class='inline no-bullet'>"+tags+"</ul>";
 								
 		            var tooltip = new mapboxgl.Popup()
 		                .setLngLat(features[0].geometry.coordinates)
-										.setHTML('<div class="logo"><img src="'+features[0].properties.user.logo.thumb.url+'" /></div><h5>' + features[0].properties.user.nombre + '</h5><h6 class="no-margin">' + features[0].properties.user.lugar + '</h6><h6 class="no-margin">' + features[0].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + features[0].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + features[0].properties.user.telefono + '</span></div></div>')
+										.setHTML(html)
 		                .addTo(map);
 								
+								var sidepost = '<div class="image_map"><img src="'+features[0].properties.imagen+'" /></div><h5>'+ features[0].properties.title +'</h5><p class="no-margin maxh">'+ features[0].properties.description+'</p><hr /><h5>Organiza:</h5><div class="logo"><img src="'+features[0].properties.user.logo.thumb.url+'" /></div><h6 class="no-margin">' + features[0].properties.user.nombre + '</h6><h6 class="no-margin subheader">' + features[0].properties.user.lugar + '</h6><h6 class="no-margin subheader">' + features[0].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + features[0].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + features[0].properties.user.telefono + '</span></div></div>';
 								
 								$('#features').show();
-								document.getElementById('features').innerHTML = html;
+								document.getElementById('features').innerHTML = sidepost;
+								
+								setTimeout(function() {
+									$('#features').hide();
+			            map.flyTo({
+										center: museo,
+										zoom: 12.2,
+										speed: 0.6,
+									  curve: 1
+									});
+								}, 20000);
 		        }
 		    });
 			});
