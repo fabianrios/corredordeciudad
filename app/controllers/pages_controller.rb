@@ -8,7 +8,7 @@ class PagesController < ApplicationController
         @eventos_all = Evento.all.order("cuando ASC")
       end
     end
-    @eventos = Evento.closer_date Time.now
+    @eventos = Evento.closer_date(Time.now).limit(15)
     @geojson = {}
     @geojson[:type] = "FeatureCollection";
     @geojson[:features] = [];
