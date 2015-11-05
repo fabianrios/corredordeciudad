@@ -12,24 +12,24 @@
   <div class="sidebar_date">Octubre 2015 - Marzo 2016</div>
 	<% if params[:page].present? && params[:page] == "explorer"%>
 	<ul class="side-nav" role="navigation" title="Link List">
-		 <li role="menuitem"><a href="/pages/explorer">Todos los eventos</a></li>
-	   <li role="menuitem"><a href="/pages/explorer?ruta=nororiental">Zona Nororiental</a></li>
-	   <li role="menuitem"><a href="/pages/explorer?ruta=centroriental">Zona Centroriental</a></li>
-	   <li role="menuitem"><a href="/pages/explorer?ruta=centroccidental">Zona Centroccidental</a></li>
-	   <li role="menuitem"><a href="/pages/explorer?ruta=suroriental">Zona Suroriental</a></li>
-	   <li role="menuitem"><a href="/pages/explorer?ruta=suroccidental">Zona Suroccidental</a></li>
-	   <li role="menuitem"><a href="/pages/explorer?ruta=rural">Distrito rural</a></li>
+		 <li role="menuitem"><a href="/pages/explorer"><%= fa_icon "globe" %> Todos los eventos</a></li>
+	   <li role="menuitem"><a href="/pages/explorer?ruta=nororiental"> <%= fa_icon "location-arrow" %> Zona Nororiental</a></li>
+	   <li role="menuitem"><a href="/pages/explorer?ruta=centroriental"><%= fa_icon "location-arrow" %> Zona Centroriental</a></li>
+	   <li role="menuitem"><a href="/pages/explorer?ruta=centroccidental"><%= fa_icon "location-arrow" %> Zona Centroccidental</a></li>
+	   <li role="menuitem"><a href="/pages/explorer?ruta=suroriental"><%= fa_icon "location-arrow" %> Zona Suroriental</a></li>
+	   <li role="menuitem"><a href="/pages/explorer?ruta=suroccidental"><%= fa_icon "location-arrow" %> Zona Suroccidental</a></li>
+	   <li role="menuitem"><a href="/pages/explorer?ruta=rural"><%= fa_icon "location-arrow" %> Distrito rural</a></li>
 	 </ul>
 	 <div class="text-left">
-	 	<a class="button radius small" href="/">Volver</a>
+	 	<a class="button radius small" href="/"><%= fa_icon "chevron-left" %> Volver</a>
 		<% if params[:page].present? && params[:page] == "explorer"%>
-	  		<a class="button small radius secondary right" href="/pages/map">Mapa</a>  
+	  		<a class="button small radius secondary right" href="/pages/map"> <i class="fa fa-map-o"></i> Mapa</a>  
 		<% end %>
 	 </div>
 	 <% else %>
 	 <br />
  		 <div class="text-center">
- 		 	<a class="button small radius" href="/pages/explorer">Ver todos los eventos</a>
+ 		 	<a class="button small radius" href="/pages/explorer"><%= fa_icon "globe" %> Ver todos los eventos</a>
  		 </div>
 	 <% end %>
   <div class="side_footer">

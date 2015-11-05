@@ -28,7 +28,7 @@
 						</div>
 	          <h5 class="no-margin" id="name_fix"><%= evento.nombre %></h5>
 	          <div class="text-right">
-	            <span class="label success"><%= evento.cuando.strftime('%F, %I:%M %p') %></span>
+	            <span class="label success"><%= fa_icon "calendar-check-o" %> <%= evento.cuando.strftime('%F, %I:%M %p') %></span>
 	          </div>
 	          <div class="desc">
 	            <%= evento.descripcion.truncate(150, separator: ' ') %>
@@ -43,9 +43,9 @@
 	              </div>
 	            <% end %>
 	          </div>
-	          <h6 class="subheader no-margin"><%= evento.direccion.present? ? evento.direccion : '' %>, <%= evento.lugar.present? ? evento.lugar : '' %></h6>
+	          <h6 class="subheader no-margin"> <%= fa_icon "map-marker" %> <%= evento.direccion.present? ? evento.direccion : '' %>, <%= evento.lugar.present? ? evento.lugar : '' %></h6>
 	          <% if evento.tag_list.present? %>
-	            <%= fa_icon "tags" %> <%= raw evento.tag_list.map { |t| link_to t, tag_path(t), :class => 'label gray', "data-filter" => "."+t }.join(' ') %>
+	            <%= fa_icon "tags flip-horizontal" %> <%= raw evento.tag_list.map { |t| link_to t, tag_path(t), :class => 'label gray', "data-filter" => "."+t }.join(' ') %>
 	          <% end %>
 	          <% if evento.web.present? %>
 	            <h6 class="subheader text-center"><%= link_to evento.web %></h6>

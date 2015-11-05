@@ -1,7 +1,7 @@
 <div class="row">
   <div class="large-12 columns">
     <% if @eventos.count > 0 %>
-      <h2><%= current_user.try(:admin?) ? "Eventos" : "Mis eventos"  %> <%= params[:tag].present? ? link_to('Ver todos los eventos', eventos_path, :class => "button tiny secondary", :style => "position:relative;top:-6px;" ) : "" %> </h2>
+      <h2><%= current_user.try(:admin?) ? "(#{@eventos.count}) Eventos" : "Mis eventos (#{@eventos.count})"  %> <%= params[:tag].present? ? link_to('Ver todos los eventos', eventos_path, :class => "button tiny secondary", :style => "position:relative;top:-6px;" ) : "" %> </h2>
       <br />
     <% end %>
     <ul class="large-block-grid-3 small-block-grid-2">
@@ -16,7 +16,7 @@
 					</div>
           <h4 class="no-margin"><%= evento.nombre %></h4>
           <div class="text-right">
-            <span class="label success"><%= evento.cuando.strftime('%F, %I:%M %p') %></span>
+            <span class="label success"> <%= fa_icon "calendar-check-o" %> <%= evento.cuando.strftime('%F, %I:%M %p') %></span>
           </div>
           <div class="desc">
             <%= evento.descripcion.truncate(150, separator: ' ') %>
@@ -36,9 +36,9 @@
               </div>
             <% end %>
           </div>
-          <h6 class="subheader no-margin"><%= evento.direccion.present? ? evento.direccion : '' %>, <%= evento.lugar.present? ? evento.lugar : '' %></h6>
+          <h6 class="subheader no-margin"><%= fa_icon "map-marker" %> <%= evento.direccion.present? ? evento.direccion : '' %>, <%= evento.lugar.present? ? evento.lugar : '' %></h6>
           <% if evento.tag_list.present? %>
-            <%= fa_icon "tags" %> <%= raw evento.tag_list.map { |t| link_to t, tag_path(t), :class => 'label gray', "data-filter" => "."+t }.join(' ') %>
+            <%= fa_icon "tags flip-horizontal" %> <%= raw evento.tag_list.map { |t| link_to t, tag_path(t), :class => 'label gray', "data-filter" => "."+t }.join(' ') %>
           <% end %>
           <% if evento.web.present? %>
             <h6 class="subheader text-center"><%= link_to evento.web %></h6>
@@ -59,8 +59,12 @@
    
     <div class="text-center">
       <br /><br />
-      <%= link_to 'Completar mi perfil', edit_user_registration_path, class: "button secondary" %>
-      <%= link_to 'Crear un nuevo evento', new_evento_path, class: "button success" %>
+      <%= link_to edit_user_registration_path, class: "button secondary radius medium" do %>
+				<%= fa_icon "user" %> Completar mi perfil
+			<% end %>
+      <%= link_to new_evento_path, class: "button success radius medium" do %>
+				<%= fa_icon "plus-circle" %> Crear un nuevo evento 
+			<% end %>
     </div>
     </div>
 </div>
