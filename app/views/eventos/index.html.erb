@@ -91,22 +91,28 @@
 					<span class="label radius secondary"><%= user.eventos.count %> Eventos</span>
 					<% end %>
 				</h4>
-				<ul class="no bullet">
-					<li><% if user.try(:email).present? %>
-						<a href="<%= user.try(:email) %>" class="email"><%= fa_icon "envelope-o" %> <%= user.try(:email) %></a>
-						<% end %></li>
-						<li><% if user.try(:telefono).present?  %>
-							<a href="<%= user.try(:telefono) %>" class="email"><%= fa_icon "phone" %> <%= user.try(:telefono) %></a>
-							<% end %></li>
-						</ul>
 						<% if user.try(:descripcion).present?  %>
 						<p>
 							<%= user.try(:descripcion).truncate(150, separator: ' ') %>
 						</p>
 						<% end %>
-						<% if user.try(:direccion).present?  %>
-						<a href="<%= user.try(:direccion) %>"><%= fa_icon "location-arrow" %> <%= user.try(:direccion) %></a>
-						<% end %>
+					<ul class="no-bullet">
+						<li>
+							<% if user.try(:email).present? %>
+							<a href="<%= user.try(:email) %>" class="email"><%= fa_icon "envelope-o" %> <%= user.try(:email) %></a>
+							<% end %>
+						</li>
+						<li>
+							<% if user.try(:telefono).present?  %>
+								<a href="<%= user.try(:telefono) %>" class="email"><%= fa_icon "phone" %> <%= user.try(:telefono) %></a>
+								<% end %>
+						</li>
+						<li>
+							<% if user.try(:direccion).present?  %>
+							<a href="<%= user.try(:direccion) %>"><%= fa_icon "location-arrow" %> <%= user.try(:direccion) %></a>
+							<% end %>
+						</li>
+					</ul>
 			   
 					</li>
 					<% end %>
