@@ -3,9 +3,9 @@ class PagesController < ApplicationController
   def show
     if params["page"] == "explorer"
       if params["ruta"].present?
-        @eventos_all = Evento.joins(:user).merge(User.elbarrio(params["ruta"])).order("cuando ASC")
+        @eventos_all = Evento.where(:publish => true).joins(:user).merge(User.elbarrio(params["ruta"])).order("cuando ASC")
       else
-        @eventos_all = Evento.all.order("cuando ASC")
+        @eventos_all = Evento.where(:publish => true).order("cuando ASC")
       end
     end
     @eventos = Evento.closer_date(Time.now).limit(15)
