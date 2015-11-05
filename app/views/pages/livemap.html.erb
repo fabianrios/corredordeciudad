@@ -65,7 +65,7 @@ map.on('style.load', function (e) {
 	var small_time = 40000;
 	window.setInterval(function() {
 		demo();
-		console.log("corrio la funcion primaria");
+		console.log("corrio la funcion primaria demo");
 	}, time_map);
 		  
 	var all_pos = {};
@@ -100,7 +100,7 @@ map.on('style.load', function (e) {
 				map.flyTo({
 					center: new_coord,
 					zoom: 13.2,
-					speed: 0.2
+					speed: 0.5
 				});
 							
 				var tags = "";
@@ -136,7 +136,7 @@ map.on('style.load', function (e) {
 						map.flyTo({
 							center: museo,
 							zoom: 12,
-							speed: 0.2
+							speed: 0.5
 						});
 					},intervalo);
 								
