@@ -99,9 +99,11 @@
 							<a href="<%= user.try(:telefono) %>" class="email"><%= fa_icon "phone" %> <%= user.try(:telefono) %></a>
 							<% end %></li>
 						</ul>
+						<% if user.try(:descripcion).present?  %>
 						<p>
 							<%= user.try(:descripcion).truncate(150, separator: ' ') %>
 						</p>
+						<% end %>
 						<% if user.try(:direccion).present?  %>
 						<a href="<%= user.try(:direccion) %>"><%= fa_icon "location-arrow" %> <%= user.try(:direccion) %></a>
 						<% end %>
