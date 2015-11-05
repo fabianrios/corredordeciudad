@@ -23,8 +23,12 @@
   </head>
 
   <body>
-	
-		<div class="main"><%= yield %></div>
+		<% if params[:page].present? && params[:page] == "explorer"%>
+		  <%= render partial: "sidebar" %>
+		<% end %>
+		<div class="main">
+			<%= yield %>
+		</div>
 
   </body>
 </html>

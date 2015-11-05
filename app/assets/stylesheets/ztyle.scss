@@ -27,7 +27,7 @@
 }
 
 .no-margin{
-	margin: 0;
+	margin: 0 !important;
 }
 
 .capitalize{
@@ -122,11 +122,36 @@ h1, h2, h3, h4, h5, h6{
 	margin: 0;
 }
 
+#main-fix{
+  line-height: 25px;
+  padding-top: 10px;
+}
+
 .main-content{
  	display: inline-block;
 	width: 74%;
 	height: 100%;
 	margin: 0;
+  max-width: 600px;
+  float: right;
+  @media only screen and (min-width: 980px) { 
+    max-width: 655px;
+  }
+  @media only screen and (min-width: 1025px) { 
+    max-width: 700px;
+  }
+  @media only screen and (min-width: 1080px) { 
+    max-width: 750px;
+  }
+  @media only screen and (min-width: 1240px) { 
+    float: none;
+    max-width: 915px;
+  }
+  @media only screen and (min-width: 1280px) { 
+    float: none;
+    max-width: inherit;
+  }
+  
 	.main-yield{
 		min-height: 600px;	
 	}
@@ -238,8 +263,8 @@ textarea{
   background: rgba(255, 255, 255, 0.9);
   p{
     font-size: 13px !important;
-	max-height: 300px;
-	overflow: hidden;
+  	max-height: 250px;
+  	overflow: hidden;
   }
 }
 
@@ -272,6 +297,19 @@ textarea{
 
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip{
   border-bottom-color:rgba(white, .9) !important;
+}
+
+.side-nav li a:not(.button){
+  padding-left: 0 !important;
+  color: #fff !important;
+  &:hover{
+    padding-left: 5px !important;
+    &:after{
+      content:">";
+      float: right;
+      margin-right: 5px;
+    }
+  }
 }
 
 //not mine in a millon years
@@ -380,3 +418,4 @@ span.patrocinador.alcaldia{
 #patrocinadores .tipo_patrocinio.textual .grupo:nth-of-type(2){
   padding-left: 20px;
 }
+

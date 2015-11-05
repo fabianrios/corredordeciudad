@@ -1,0 +1,55 @@
+<div class="main-content">
+	<div class="row">
+	  <div class="large-12 columns">
+	    <% if @eventos_all.count > 0 %>
+	      <h2>Eventos </h2>
+			<% else %>
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				 <div class="text-center">
+	         <h2 >No hay eventos en esta zona </h2>
+					 <a class="button radius success" href="/pages/explorer">Volver</a>
+				 </div>
+	    <% end %>
+	    <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-2">
+	      <% @eventos_all.each do |evento| %>
+	        <li>
+	          <% if evento.imagen.present? %>
+	            <%= image_tag evento.imagen_url(:big), class: "full" %>
+	          <% else %>
+	            <%= image_tag "http://placehold.it/350x200?text=sin+imagen", class: "full" %>
+	          <% end %>
+	          <h5 class="no-margin" id="name_fix"><%= evento.nombre %></h5>
+	          <div class="text-right">
+	            <span class="label success"><%= evento.cuando.strftime('%F, %I:%M %p') %></span>
+	          </div>
+	          <div class="desc">
+	            <%= evento.descripcion.truncate(150, separator: ' ') %>
+	            <% if evento.descripcion.length > 150 %>
+	              <a href="#" data-reveal-id="modal-<%= evento.id %>"><%= fa_icon "search-plus" %></a>
+	              <div id="modal-<%= evento.id %>" class="reveal-modal" data-reveal aria-labelledby="<%= evento.nombre %>" aria-hidden="true" role="dialog">
+	                <h2 id="modalTitle"><%= evento.nombre %></h2>
+	                <div class="long-desc">
+	                  <%= evento.descripcion %>
+	                </div>
+	                <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+	              </div>
+	            <% end %>
+	          </div>
+	          <h6 class="subheader no-margin"><%= evento.direccion.present? ? evento.direccion : '' %>, <%= evento.lugar.present? ? evento.lugar : '' %></h6>
+	          <% if evento.tag_list.present? %>
+	            <%= fa_icon "tags" %> <%= raw evento.tag_list.map { |t| link_to t, tag_path(t), :class => 'label gray', "data-filter" => "."+t }.join(' ') %>
+	          <% end %>
+	          <% if evento.web.present? %>
+	            <h6 class="subheader text-center"><%= link_to evento.web %></h6>
+	          <% end %>
+	        </li>
+	      <% end %>
+	    </ul>
+	    </div>
+	</div>
+</div>

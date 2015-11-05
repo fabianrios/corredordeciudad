@@ -1,7 +1,14 @@
 class PagesController < ApplicationController
   layout "public_layout"
   def show
-    @eventos = Evento.all
+    if params["page"] == "explorer"
+      if params["ruta"].present?
+        @eventos_all = Evento.joins(:user).merge(User.elbarrio(params["ruta"])).order("cuando ASC")
+      else
+        @eventos_all = Evento.all.order("cuando ASC")
+      end
+    end
+    @eventos = Evento.closer_date Time.now
     @geojson = {}
     @geojson[:type] = "FeatureCollection";
     @geojson[:features] = [];

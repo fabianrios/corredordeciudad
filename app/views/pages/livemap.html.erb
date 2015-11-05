@@ -4,8 +4,8 @@
 <script>
 		
 var museo = [-75.571529,6.252187];
-var tiempo = 20000;
-var intervalo = 5000;
+var tiempo = 80000;
+var intervalo = 40000;
 // Provide your access token
 mapboxgl.accessToken = 'pk.eyJ1IjoiZmFiaWFucmlvcyIsImEiOiJjaWc3ZDFhMjMwczFvdjRrcHF4bXliMzNoIn0.PTi-JKyYhEaQknlR6iGCoA';
 // Create a map in the div #map
@@ -31,12 +31,12 @@ map.on('style.load', function (e) {
 			
 	map.setLayoutProperty('country-label-lg', 'text-field', '{name_' + 'es' + '}');
 	map.setPaintProperty('water', 'fill-color', '#5796e5');
-	map.setPaintProperty('waterway', 'line-color', '#2c4c8c');
-	map.setPaintProperty('landuse_park', 'fill-color', '#253913');
-	map.setPaintProperty('landuse_industrial', 'fill-color', '#ece351');
-	map.setPaintProperty('landuse_wood', 'fill-color', '#021c07');
+	map.setPaintProperty('waterway', 'line-color', '#5796e5');
+	map.setPaintProperty('landuse_park', 'fill-color', '#4CAF50');
+	// map.setPaintProperty('landuse_industrial', 'fill-color', '#ece351');
+	// map.setPaintProperty('landuse_wood', 'fill-color', '#145406');
 	map.setPaintProperty('hillshade_highlight_bright', 'fill-color', '#70A93F');
-	map.setPaintProperty('road-trunk', 'line-color', '#96926c');
+	map.setPaintProperty('road-trunk', 'line-color', '#F5BF1D');
 	map.setPaintProperty('road-street-low-zoom', 'line-color', '#2d2c26');
 			
 			
@@ -61,8 +61,8 @@ map.on('style.load', function (e) {
 		}
 	}); // addLayers
 			
-	var time_map = 45000;
-	var small_time = 5000;
+	var time_map = 240000;
+	var small_time = 40000;
 	window.setInterval(function() {
 		demo();
 		console.log("corrio la funcion primaria");
@@ -78,7 +78,7 @@ map.on('style.load', function (e) {
 			all_pos = data.features
 			time_map = (all_pos.length*intervalo)+tiempo;
 			small_time = (time_map-tiempo)/all_pos.length;
-			console.log(time_map, small_time);
+			console.log("tiempo para correr demo: ", time_map, "para que corra cada uno: " + small_time);
 		}).fail(function(data){
 			console.log(data);
 		});
@@ -100,7 +100,7 @@ map.on('style.load', function (e) {
 				map.flyTo({
 					center: new_coord,
 					zoom: 13.2,
-					speed: 1
+					speed: 0.2
 				});
 							
 				var tags = "";
@@ -121,9 +121,6 @@ map.on('style.load', function (e) {
 				setTimeout(function () {
 					tooltip.remove();
 				},intervalo);
-							
-								
-				console.log("added: ", typeof tooltip);
 								
 				var sidepost = '<div class="image_map"><img src="'+all_pos[i].properties.imagen+'" /></div><h5>'+ all_pos[i].properties.title +'</h5><p class="no-margin maxh">'+ all_pos[i].properties.description+'</p><hr /><h5>Organiza:</h5><div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h6 class="no-margin">' + all_pos[i].properties.user.nombre + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + all_pos[i].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>';
 				$('#features').show();
@@ -133,20 +130,18 @@ map.on('style.load', function (e) {
 				if (i < all_pos.length) {
 					myLoop();
 				}else{
-								
-					console.log("esperando:", tiempo);
+					console.log("esperando:", small_time);
 					setTimeout(function () {
 						$('#features').hide();
 						map.flyTo({
 							center: museo,
 							zoom: 12,
-							speed: 0.7,
-							curve: 3
+							speed: 0.2
 						});
 					},intervalo);
 								
 					setTimeout(function () {
-					},tiempo);
+					},small_time);
 				}
 			},intervalo)
 		}
