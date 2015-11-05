@@ -37,6 +37,7 @@ class PagesController < ApplicationController
                 cuando: event.cuando.strftime('%F, %I:%M %p'),
                 imagen: @imagen,
                 duracion: event.duracion,
+                organiza: event.organiza,
                 tag_list: event.tag_list, 
                 user: event.user
               } 

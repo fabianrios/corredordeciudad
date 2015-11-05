@@ -110,6 +110,8 @@ map.on('style.load', function (e) {
 					});
 					tags = "<li><i class='fa fa-tags fa-flip-horizontal'></i></li>"+tags;
 				}
+				
+				var organiza = all_pos[i].properties.organiza || all_pos[i].properties.user.nombre
 
 				var html = "<h5 class='capitalize'>"+all_pos[i].properties.title+"</h5>"+"<div class='text-center'><span class='label success'>"+all_pos[i].properties.cuando+"</span></div><div class='text-center'><a>"+all_pos[i].properties.web+"</a></div>"+"<div class='text-center'>"+all_pos[i].properties.direccion+"</div><ul class='inline no-bullet'>"+tags+"</ul>";
 							
@@ -122,7 +124,7 @@ map.on('style.load', function (e) {
 					tooltip.remove();
 				},intervalo);
 								
-				var sidepost = '<div class="image_map"><img src="'+all_pos[i].properties.imagen+'" /></div><h5>'+ all_pos[i].properties.title +'</h5><p class="no-margin maxh">'+ all_pos[i].properties.description+'</p><hr /><h5>Organiza:</h5><div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h6 class="no-margin">' + all_pos[i].properties.user.nombre + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + all_pos[i].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>';
+				var sidepost = '<div class="image_map"><img src="'+all_pos[i].properties.imagen+'" /></div><h5>'+ all_pos[i].properties.title +'</h5><p class="no-margin maxh">'+ all_pos[i].properties.description+'</p><hr /><h5>Organiza:</h5><div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h6 class="no-margin">' + organiza + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + all_pos[i].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>';
 				$('#features').show();
 				document.getElementById('features').innerHTML = sidepost;
 							

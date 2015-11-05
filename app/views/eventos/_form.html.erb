@@ -22,6 +22,10 @@
     <%= f.text_field :lugar, :value => @evento.lugar || current_user.lugar, :placeholder => "Ej: Cerca al exito del centro" %>
   </div>
   <div class="field">
+    <%= f.label :organiza %>
+    <%= f.text_field :organiza, :value => @evento.organiza || current_user.nombre, :placeholder => "Ej: Instituto Caro y cuervo" %>
+  </div>
+  <div class="field">
     <%= f.check_box :espacio %>
     <%= f.label :espacio, "Marque la casilla si necesita un espacio", id: "inliner" %>
   </div>
