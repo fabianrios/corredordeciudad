@@ -196,14 +196,15 @@ h1, h2, h3, h4, h5, h6{
   h5, a{
     font-size: 90%;
   }
-  .pic{
-    float: left;
-    margin-right: 10px;
-    img{
-     @include border-radius(100%); 
-     width: 70px;
-     height: 70px;
-    }
+}
+
+.pic{
+  float: left;
+  margin-right: 10px;
+  img{
+   @include border-radius(100%); 
+   width: 70px;
+   height: 70px;
   }
 }
 

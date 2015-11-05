@@ -1,72 +1,114 @@
 <div class="row">
-  <div class="large-12 columns">
-    <% if @eventos.count > 0 %>
-      <h2><%= current_user.try(:admin?) ? "(#{@eventos.count}) Eventos" : "Mis eventos (#{@eventos.count})"  %> <%= params[:tag].present? ? link_to('Ver todos los eventos', eventos_path, :class => "button tiny secondary", :style => "position:relative;top:-6px;" ) : "" %> </h2>
-      <br />
-    <% end %>
-    <ul class="large-block-grid-3 small-block-grid-2">
-      <% @eventos.each do |evento| %>
-        <li>
-          <div class="laimagen">
-						<% if evento.imagen.present? %>
-          	  <%= image_tag evento.imagen_url(:big), class: "full" %>
-          	<% else %>
-          	  <%= image_tag "http://placehold.it/350x250?text=sin+imagen", class: "full" %>
-          	<% end %>
+	<div class="large-12 columns">
+		
+		<div class="text-center">
+			<br /><br />
+			<%= link_to edit_user_registration_path, class: "button secondary radius medium" do %>
+			<%= fa_icon "user" %> Completar mi perfil
+			<% end %>
+			<%= link_to new_evento_path, class: "button success radius medium" do %>
+			<%= fa_icon "plus-circle" %> Crear un nuevo evento 
+			<% end %>
+		</div>
+		
+		<% if @eventos.count > 0 %>
+		<h2><%= current_user.try(:admin?) ? "(#{@eventos.count}) Eventos" : "Mis eventos (#{@eventos.count})"  %> <%= params[:tag].present? ? link_to('Ver todos los eventos', eventos_path, :class => "button tiny secondary", :style => "position:relative;top:-6px;" ) : "" %> </h2>
+		<br />
+		<% end %>
+		<ul class="large-block-grid-3 small-block-grid-2">
+			<% @eventos.each do |evento| %>
+			<li>
+				<div class="laimagen">
+					<% if evento.imagen.present? %>
+					<%= image_tag evento.imagen_url(:big), class: "full" %>
+					<% else %>
+					<%= image_tag "http://placehold.it/350x250?text=sin+imagen", class: "full" %>
+					<% end %>
+				</div>
+				<h4 class="no-margin"><%= evento.nombre %></h4>
+				<div class="text-right">
+					<span class="label success"> <%= fa_icon "calendar-check-o" %> <%= evento.cuando.strftime('%F, %I:%M %p') %></span>
+				</div>
+				<div class="desc">
+					<%= evento.descripcion.truncate(150, separator: ' ') %>
+					<% if evento.descripcion.length > 150 %>
+					<a href="#" data-reveal-id="modal-<%= evento.id %>"><%= fa_icon "search-plus" %></a>
+					<div id="modal-<%= evento.id %>" class="reveal-modal" data-reveal aria-labelledby="<%= evento.nombre %>" aria-hidden="true" role="dialog">
+						<h2 id="modalTitle"><%= evento.nombre %></h2>
+						<div class="long-desc">
+							<%= evento.descripcion %>
+							<hr />
+							<% if evento.espacio %>
+							<h3>Necesidades espaciales</h3>
+							<%= evento.necesidades %>
+							<% end %>
+						</div>
+						<a class="close-reveal-modal" aria-label="Close">&#215;</a>
 					</div>
-          <h4 class="no-margin"><%= evento.nombre %></h4>
-          <div class="text-right">
-            <span class="label success"> <%= fa_icon "calendar-check-o" %> <%= evento.cuando.strftime('%F, %I:%M %p') %></span>
-          </div>
-          <div class="desc">
-            <%= evento.descripcion.truncate(150, separator: ' ') %>
-            <% if evento.descripcion.length > 150 %>
-              <a href="#" data-reveal-id="modal-<%= evento.id %>"><%= fa_icon "search-plus" %></a>
-              <div id="modal-<%= evento.id %>" class="reveal-modal" data-reveal aria-labelledby="<%= evento.nombre %>" aria-hidden="true" role="dialog">
-                <h2 id="modalTitle"><%= evento.nombre %></h2>
-                <div class="long-desc">
-                  <%= evento.descripcion %>
-                  <hr />
-                  <% if evento.espacio %>
-                    <h3>Necesidades espaciales</h3>
-                    <%= evento.necesidades %>
-                  <% end %>
-                </div>
-                <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-              </div>
-            <% end %>
-          </div>
-          <h6 class="subheader no-margin"><%= fa_icon "map-marker" %> <%= evento.direccion.present? ? evento.direccion : '' %>, <%= evento.lugar.present? ? evento.lugar : '' %></h6>
-          <% if evento.tag_list.present? %>
-            <%= fa_icon "tags flip-horizontal" %> <%= raw evento.tag_list.map { |t| link_to t, tag_path(t), :class => 'label gray', "data-filter" => "."+t }.join(' ') %>
-          <% end %>
-          <% if evento.web.present? %>
-            <h6 class="subheader text-center"><%= link_to evento.web %></h6>
-          <% end %>
-					<h6 class="no-margin subheader">Organiza:</h6>
-					<h6 class="no-margin"><%= evento.user.try(:nombre) %></h6>
-          <% if current_user.try(:admin) || current_user.id == evento.user.id %>
-            <div class="right">
-              <%= link_to edit_evento_path(evento), class: "secondary" do %>
-                <%= fa_icon "pencil", text: "Editar" %>
-              <% end %>
-              <%= link_to  evento, method: :delete, data: { confirm: '¿Estás seguro quieres borrar permanentemente este evento?' }, class: "redtxt" do %>
-                <%= fa_icon "trash-o", text: "borrar" %>
-              <% end %>
-            </div>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-   
-    <div class="text-center">
-      <br /><br />
-      <%= link_to edit_user_registration_path, class: "button secondary radius medium" do %>
-				<%= fa_icon "user" %> Completar mi perfil
+					<% end %>
+				</div>
+				<h6 class="subheader no-margin"><%= fa_icon "map-marker" %> <%= evento.direccion.present? ? evento.direccion : '' %>, <%= evento.lugar.present? ? evento.lugar : '' %></h6>
+				<% if evento.tag_list.present? %>
+				<%= fa_icon "tags flip-horizontal" %> <%= raw evento.tag_list.map { |t| link_to t, tag_path(t), :class => 'label gray', "data-filter" => "."+t }.join(' ') %>
+				<% end %>
+				<% if evento.web.present? %>
+				<h6 class="subheader text-center"><%= link_to evento.web %></h6>
+				<% end %>
+				<h6 class="no-margin subheader">Organiza:</h6>
+				<h6 class="no-margin"><%= evento.user.try(:nombre) %></h6>
+				<% if current_user.try(:admin) || current_user.id == evento.user.id %>
+				<div class="right">
+					<%= link_to edit_evento_path(evento), class: "secondary" do %>
+					<%= fa_icon "pencil", text: "Editar" %>
+					<% end %>
+					<%= link_to  evento, method: :delete, data: { confirm: '¿Estás seguro quieres borrar permanentemente este evento?' }, class: "redtxt" do %>
+					<%= fa_icon "trash-o", text: "borrar" %>
+					<% end %>
+				</div>
+				<% end %>
+			</li>
 			<% end %>
-      <%= link_to new_evento_path, class: "button success radius medium" do %>
-				<%= fa_icon "plus-circle" %> Crear un nuevo evento 
-			<% end %>
-    </div>
-    </div>
+		</ul>
+	</div>
 </div>
+
+<% if current_user.try(:admin) %>
+<br />
+<br />
+<br />
+<div class="row">
+	<div class="large-12 columns">
+		<h2>Proyectos (<%= @users.present? ? @users.count : 0 %>)</h2>
+		<br />
+		<ul class="large-block-grid-3 small-block-grid-2">
+			<% @users.each do |user| %>
+			<li>
+				<div class="pic">
+					<%= image_tag user.logo.present? ? user.logo_url(:thumb) : "http://placehold.it/70"  %>
+				</div>
+				<h4 class="capitalize"><%= user.nombre %>
+					<% if user.eventos.present? && user.eventos.count > 0 %>
+					<span class="label radius secondary"><%= user.eventos.count %> Eventos</span>
+					<% end %>
+				</h4>
+				<ul class="no bullet">
+					<li><% if user.try(:email).present? %>
+						<a href="<%= user.try(:email) %>" class="email"><%= fa_icon "envelope-o" %> <%= user.try(:email) %></a>
+						<% end %></li>
+						<li><% if user.try(:telefono).present?  %>
+							<a href="<%= user.try(:telefono) %>" class="email"><%= fa_icon "phone" %> <%= user.try(:telefono) %></a>
+							<% end %></li>
+						</ul>
+						<p>
+							<%= user.try(:descripcion).truncate(150, separator: ' ') %>
+						</p>
+						<% if user.try(:direccion).present?  %>
+						<a href="<%= user.try(:direccion) %>"><%= fa_icon "location-arrow" %> <%= user.try(:direccion) %></a>
+						<% end %>
+			   
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+<% end %>

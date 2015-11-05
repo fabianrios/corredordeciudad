@@ -6,7 +6,7 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-    
+    @users = User.all
     @tags = current_user.tag_counts_on(:tags)
     if current_user.try(:admin?) && params[:tag]
       @eventos = Evento.tagged_with(params[:tag])
