@@ -52,7 +52,12 @@ h1, h2, h3, h4, h5, h6{
 
 .full{
   width: 100%;
+  min-height: 200px;
+}
+
+.laimagen{
   height: 200px;
+  overflow: hidden;
 }
 
 .error_explanation, #error_explanation{
@@ -303,6 +308,7 @@ textarea{
   padding-left: 0 !important;
   color: #fff !important;
   &:hover{
+    transition: padding 0.5s ease;
     padding-left: 5px !important;
     &:after{
       content:">";

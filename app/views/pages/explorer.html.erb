@@ -2,7 +2,8 @@
 	<div class="row">
 	  <div class="large-12 columns">
 	    <% if @eventos_all.count > 0 %>
-	      <h2>Eventos </h2>
+	      <h2>(<%= @eventos_all.count %>) Eventos</h2>
+				<br />
 			<% else %>
 				<br />
 				<br />
@@ -18,11 +19,13 @@
 	    <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-2">
 	      <% @eventos_all.each do |evento| %>
 	        <li>
-	          <% if evento.imagen.present? %>
-	            <%= image_tag evento.imagen_url(:big), class: "full" %>
-	          <% else %>
-	            <%= image_tag "http://placehold.it/350x200?text=sin+imagen", class: "full" %>
-	          <% end %>
+						<div class="laimagen">
+							<% if evento.imagen.present? %>
+							  <%= image_tag evento.imagen_url(:big), class: "full" %>
+							<% else %>
+							  <%= image_tag "http://placehold.it/350x250?text=sin+imagen", class: "full" %>
+							<% end %>
+						</div>
 	          <h5 class="no-margin" id="name_fix"><%= evento.nombre %></h5>
 	          <div class="text-right">
 	            <span class="label success"><%= evento.cuando.strftime('%F, %I:%M %p') %></span>

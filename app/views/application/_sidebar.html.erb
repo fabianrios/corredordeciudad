@@ -7,8 +7,9 @@
   </div>
   <div class="sidebar_date">Octubre 2015 - Marzo 2016</div>
 	<br />
+	<% if params[:page].present? && params[:page] == "explorer"%>
 	<ul class="side-nav" role="navigation" title="Link List">
-		 <li role="menuitem"><a href="/pages/explorer">Todos</a></li>
+		 <li role="menuitem"><a href="/pages/explorer">Todos los eventos</a></li>
 	   <li role="menuitem"><a href="/pages/explorer?ruta=nororiental">Nororiental</a></li>
 	   <li role="menuitem"><a href="/pages/explorer?ruta=centroriental">Centroriental</a></li>
 	   <li role="menuitem"><a href="/pages/explorer?ruta=centroccidental">Centroccidental</a></li>
@@ -16,6 +17,14 @@
 	   <li role="menuitem"><a href="/pages/explorer?ruta=suroccidental">Suroccidental</a></li>
 	   <li role="menuitem"><a href="/pages/explorer?ruta=rural">Distrito rural</a></li>
 	 </ul>
+	 <div class="text-left">
+	 	<a class="button radius small" href="/">Volver</a>
+	 </div>
+	 <% else %>
+ 		 <div class="text-center">
+ 		 	<a class="button small radius" href="/pages/explorer">Ver todos los eventos</a>
+ 		 </div>
+	 <% end %>
   <div class="side_footer">
     <a class="courier whitetxt" href="http://www.museodeantioquia.co/suscripcion-boletin-mde15/">Boletín</a>
   </div>
