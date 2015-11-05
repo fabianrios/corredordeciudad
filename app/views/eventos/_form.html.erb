@@ -15,15 +15,15 @@
   <br />
   <div class="field">
     <%= f.label :direccion, "Dirección" %>
-    <%= f.text_field :direccion, :value => @evento.direccion || current_user.direccion, :placeholder => "Ej: Cra 24 # 32 - 50" %>
+    <%= f.text_field :direccion, :value => @evento.direccion || @evento.user.direccion, :placeholder => "Ej: Cra 24 # 32 - 50" %>
   </div>
   <div class="field">
     <%= f.label :lugar %>
-    <%= f.text_field :lugar, :value => @evento.lugar || current_user.lugar, :placeholder => "Ej: Cerca al exito del centro" %>
+    <%= f.text_field :lugar, :value => @evento.lugar || @evento.user.lugar, :placeholder => "Ej: Cerca al exito del centro" %>
   </div>
   <div class="field">
     <%= f.label :organiza %>
-    <%= f.text_field :organiza, :value => @evento.organiza || current_user.nombre, :placeholder => "Ej: Instituto Caro y cuervo" %>
+    <%= f.text_field :organiza, :value => @evento.organiza || @evento.user.nombre, :placeholder => "Ej: Instituto Caro y cuervo" %>
   </div>
   <div class="field">
     <%= f.check_box :espacio %>
@@ -74,7 +74,7 @@
     <div class="large-6 columns">
       <div class="field">
         <%= f.label :web, "Página web del evento" %>
-        <%= f.text_field :web, :value => @evento.web || current_user.web, :placeholder => "Ej: http://www.paginawebdelevento.com" %>
+        <%= f.text_field :web, :value => @evento.web || @evento.user.web, :placeholder => "Ej: http://www.paginawebdelevento.com" %>
       </div>
     </div>
     <div class="large-6 columns">
