@@ -86,7 +86,7 @@
     </div>
   </div>
   <div class="field hide">
-    <%= f.hidden_field :user_id, :value => current_user.id || @evento.user_id %>
+    <%= f.hidden_field :user_id, :value => @evento.user_id || current_user.id %>
   </div>
   <div class="field">
     <%= f.label :imagen do %>
