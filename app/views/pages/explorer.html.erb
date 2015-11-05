@@ -50,6 +50,8 @@
 	          <% if evento.web.present? %>
 	            <h6 class="subheader text-center"><%= link_to evento.web %></h6>
 	          <% end %>
+						<h6 class="no-margin subheader">Organiza:</h6>
+						<h6 class="no-margin"><%= evento.user.try(:nombre) %></h6>
 	        </li>
 	      <% end %>
 	    </ul>
