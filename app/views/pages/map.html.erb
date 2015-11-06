@@ -10,7 +10,7 @@
 		// Create a map in the div #map
 		var map = new mapboxgl.Map({
 		    container: 'map', // container id
-		    style: 'mapbox://styles/mapbox/dark-v8',
+		    style: 'mapbox://styles/mapbox/streets-v8',
 		    center: museo, // starting position at the museum
 		    zoom: 12, // starting zoom
 				bearing: 90
@@ -30,11 +30,11 @@
 			
 			map.setLayoutProperty('country-label-lg', 'text-field', '{name_' + 'es' + '}');
 			map.setPaintProperty('water', 'fill-color', '#5796e5');
-			map.setPaintProperty('waterway', 'line-color', '#5796e5');
-			map.setPaintProperty('landuse_park', 'fill-color', '#4CAF50');
-			map.setPaintProperty('hillshade_highlight_bright', 'fill-color', '#70A93F');
-			map.setPaintProperty('road-trunk', 'line-color', '#F5BF1D');
-			map.setPaintProperty('road-street-low-zoom', 'line-color', '#2d2c26');
+			// map.setPaintProperty('waterway', 'line-color', '#5796e5');
+			// map.setPaintProperty('landuse_park', 'fill-color', '#4CAF50');
+			// map.setPaintProperty('hillshade_highlight_bright', 'fill-color', '#70A93F');
+			// map.setPaintProperty('road-trunk', 'line-color', '#F5BF1D');
+			// map.setPaintProperty('road-street-low-zoom', 'line-color', '#2d2c26');
 			
 
 			var where = [];
@@ -109,13 +109,15 @@
 		    "source": "markers",
 				"interactive": true,
 		    "layout": {
-					  "icon-image": "default_marker",
+					  "icon-image": "art-gallery-15",
 		        "text-field": "{title}",
 		        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
 		        "text-offset": [0, 1.5],
 						"text-size": 13,
 		        "text-anchor": "top",
-						"text-optional": true
+						"text-optional": true,
+						"icon-color ": "pink",
+						"fill-enabled": true
 		    },
 		    "paint": {
 						"text-color": "#cccccc"
