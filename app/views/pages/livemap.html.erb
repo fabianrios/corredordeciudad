@@ -67,7 +67,7 @@ map.on('style.load', function (e) {
 		}
 	}); // addLayers
 			
-	var time_map = 400000;
+	var time_map = 560000;
 	var small_time = 40000;
 	window.setInterval(function() {
 		demo();
@@ -86,7 +86,7 @@ map.on('style.load', function (e) {
 			time_map = (all_pos.length*intervalo)+tiempo;
 			small_time = (time_map-tiempo)/all_pos.length;
 			document.getElementById('contador').innerHTML = "<h4>" + all_pos.length + " Eventos</h4>";
-			$('#contador').hide();
+			$('#contador').show();
 			console.log("tiempo para correr demo: ", time_map, "para que corra cada uno: " + small_time);
 		}).fail(function(data){
 			console.log(data);
