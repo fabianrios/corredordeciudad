@@ -10,7 +10,7 @@
 		// Create a map in the div #map
 		var map = new mapboxgl.Map({
 		    container: 'map', // container id
-		    style: 'mapbox://styles/mapbox/streets-v8',
+		    style: 'mapbox://styles/fabianrios/cigv12n40000c9kkk9351bc60',
 		    center: museo, // starting position at the museum
 		    zoom: 12, // starting zoom
 				bearing: 90
@@ -28,8 +28,8 @@
 
 		map.on('style.load', function (e) {
 			
-			map.setLayoutProperty('country-label-lg', 'text-field', '{name_' + 'es' + '}');
-			map.setPaintProperty('water', 'fill-color', '#5796e5');
+			// map.setLayoutProperty('country-label-lg', 'text-field', '{name_' + 'es' + '}');
+		// 	map.setPaintProperty('water', 'fill-color', '#5796e5');
 			// map.setPaintProperty('waterway', 'line-color', '#5796e5');
 			// map.setPaintProperty('landuse_park', 'fill-color', '#4CAF50');
 			// map.setPaintProperty('hillshade_highlight_bright', 'fill-color', '#70A93F');
@@ -52,7 +52,7 @@
 								
 			          map.flyTo({
 									center: new_coord,
-									zoom: 12.7,
+									zoom: 15,
 									speed: 0.8
 								});
 								
@@ -77,16 +77,6 @@
 								
 								$('#features').show();
 								document.getElementById('features').innerHTML = sidepost;
-								
-								setTimeout(function() {
-									$('#features').hide();
-			            map.flyTo({
-										center: museo,
-										zoom: 12.2,
-										speed: 0.6,
-									  curve: 1
-									});
-								}, 20000);
 		        }
 		    });
 			});
@@ -109,18 +99,21 @@
 		    "source": "markers",
 				"interactive": true,
 		    "layout": {
-					  "icon-image": "art-gallery-15",
+			    "icon-image": "spot",
 		        "text-field": "{title}",
 		        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
 		        "text-offset": [0, 1.5],
-						"text-size": 13,
+				"text-size": 13,
 		        "text-anchor": "top",
-						"text-optional": true,
-						"icon-color ": "pink",
-						"fill-enabled": true
+				"text-optional": true,
+				"icon-color ": "pink",
+				"fill-enabled": true
 		    },
 		    "paint": {
-						"text-color": "#cccccc"
+				"text-color": "#fff",
+				"text-halo-color": "#000",
+				"text-halo-width": 2,
+				"text-halo-blur": 1,
 		    }
   		}); // addLayers
 			
