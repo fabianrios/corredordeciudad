@@ -253,6 +253,17 @@ textarea{
   padding: 0 20px 0 0 ;
 }
 
+#contador{
+	display: none;
+	position: absolute;
+	left: 50%;
+	margin-left: -200px;
+	width: 200px;
+	min-height: 60px;
+	background: rgba(255,255,255,.8);
+	z-index: 9;
+}
+
 
 .mapboxgl-ctrl-group > button{
   margin: 0;
@@ -270,7 +281,7 @@ textarea{
   background: rgba(255, 255, 255, 0.9);
   p{
     font-size: 13px !important;
-  	max-height: 250px;
+  	max-height: 200px;
   	overflow: hidden;
   }
 }
@@ -318,6 +329,11 @@ textarea{
       margin-right: 5px;
     }
   }
+}
+
+.top-bar-section ul li > a{
+	text-transform: uppercase !important;
+	font-size: 1rem;
 }
 
 //not mine in a millon years

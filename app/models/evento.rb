@@ -9,7 +9,7 @@ class Evento < ActiveRecord::Base
   belongs_to :user
   
   def self.closer_date(_date)
-    where("cuando > ?", _date).where(:publish => true).order("cuando ASC")
+    where("cuando > ?", _date-1.day).where(:publish => true).order("cuando ASC")
   end
   
   def self.neighbor(neighbor)

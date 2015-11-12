@@ -1,0 +1,22 @@
+<h3><%= @eventos.count if @eventos.present? && @eventos.count > 0 %></h3>
+<ul class="no-bullet">
+	<% @eventos.each do |evento|  %>
+	<li><h4>titulo: <%= evento.summary %></h4></li>
+	<li><b>inicio:</b> <%= evento.dtstart %></li>
+	<li><b>desc:</b> <%= evento.description %></li>
+	<li><b>location:</b> <%= evento.location %></li>
+	<% if evento.contact.delete_if(&:empty?).present? && !evento.contact.delete_if(&:empty?).blank? %>
+		<li><b>contacto:</b> <%= evento.contact.join(",") %></li>
+	<% end %>
+	<li><b>latitud:</b> <%= evento.geo[0] %></li>
+	<li><b>longitud:</b> <%= evento.geo[1] %></li>
+	<% if evento.categories.delete_if(&:empty?).present? && !evento.categories.delete_if(&:empty?).blank? %>
+	<li><b>Organiza:</b> <%= evento.categories.join(",") %></li>
+	<% end %>
+	<li><b>web:</b> <%= evento.url %></li>
+	<li>
+		<hr />
+	</li>
+	<% end %>
+	
+</ul>

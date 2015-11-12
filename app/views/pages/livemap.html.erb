@@ -1,17 +1,17 @@
+<div id="contador"></div>
 <div id="map" style="width:100%;height:100%;min-height:600px;position:absolute;top:0;"></div>
 <div id='features'></div>
 
 <script>
 		
 var museo = [-75.571529,6.252187];
-var tiempo = 80000;
 var intervalo = 40000;
 // Provide your access token
 mapboxgl.accessToken = 'pk.eyJ1IjoiZmFiaWFucmlvcyIsImEiOiJjaWc3ZDFhMjMwczFvdjRrcHF4bXliMzNoIn0.PTi-JKyYhEaQknlR6iGCoA';
 // Create a map in the div #map
 var map = new mapboxgl.Map({
 	container: 'map', // container id
-	style: 'mapbox://styles/mapbox/dark-v8',
+	style: 'mapbox://styles/fabianrios/cigv12n40000c9kkk9351bc60',
 	center: museo, // starting position at the museum
 	zoom: 12, // starting zoom
 	bearing: 90
@@ -29,15 +29,15 @@ window.setInterval(function() {
 
 map.on('style.load', function (e) {
 			
-	map.setLayoutProperty('country-label-lg', 'text-field', '{name_' + 'es' + '}');
-	map.setPaintProperty('water', 'fill-color', '#5796e5');
-	map.setPaintProperty('waterway', 'line-color', '#5796e5');
-	map.setPaintProperty('landuse_park', 'fill-color', '#4CAF50');
-	// map.setPaintProperty('landuse_industrial', 'fill-color', '#ece351');
-	// map.setPaintProperty('landuse_wood', 'fill-color', '#145406');
-	map.setPaintProperty('hillshade_highlight_bright', 'fill-color', '#70A93F');
-	map.setPaintProperty('road-trunk', 'line-color', '#F5BF1D');
-	map.setPaintProperty('road-street-low-zoom', 'line-color', '#2d2c26');
+	// map.setLayoutProperty('country-label-lg', 'text-field', '{name_' + 'es' + '}');
+	// map.setPaintProperty('water', 'fill-color', '#5796e5');
+	// map.setPaintProperty('waterway', 'line-color', '#5796e5');
+	// map.setPaintProperty('landuse_park', 'fill-color', '#4CAF50');
+	// // map.setPaintProperty('landuse_industrial', 'fill-color', '#ece351');
+	// // map.setPaintProperty('landuse_wood', 'fill-color', '#145406');
+	// map.setPaintProperty('hillshade_highlight_bright', 'fill-color', '#70A93F');
+	// map.setPaintProperty('road-trunk', 'line-color', '#F5BF1D');
+	// map.setPaintProperty('road-street-low-zoom', 'line-color', '#2d2c26');
 			
 			
 
@@ -48,24 +48,30 @@ map.on('style.load', function (e) {
 		"source": "markers",
 		"interactive": true,
 		"layout": {
-			"icon-image": "default_marker",
+			"icon-image": "spot",
 			"text-field": "{title}",
 			"text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
 			"text-offset": [0, 1.5],
 			"text-size": 13,
+			"text-halo-color": "#000",
+			"text-halo-width": 2,
+			"text-halo-blur": 1,
 			"text-anchor": "top",
 			"text-optional": true
 		},
 		"paint": {
-			"text-color": "#fff"
+			"text-color": "#fff",
+			"text-halo-color": "#000",
+			"text-halo-width": 2,
+			"text-halo-blur": 1,
 		}
 	}); // addLayers
 			
-	var time_map = 240000;
+	var time_map = 400000;
 	var small_time = 40000;
 	window.setInterval(function() {
 		demo();
-		console.log("corrio la funcion primaria demo");
+		console.log("corrio la funcion primaria demo", time_map);
 	}, time_map);
 		  
 	var all_pos = {};
@@ -76,8 +82,11 @@ map.on('style.load', function (e) {
 			url: "/pages/index.json",
 		}).done(function(data) {
 			all_pos = data.features
+			var tiempo = all_pos.length*intervalo;
 			time_map = (all_pos.length*intervalo)+tiempo;
 			small_time = (time_map-tiempo)/all_pos.length;
+			document.getElementById('contador').innerHTML = "<h4>" + all_pos.length + " Eventos</h4>";
+			$('#contador').hide();
 			console.log("tiempo para correr demo: ", time_map, "para que corra cada uno: " + small_time);
 		}).fail(function(data){
 			console.log(data);
@@ -89,18 +98,18 @@ map.on('style.load', function (e) {
 					 
 			setTimeout(function () {
 							
-				console.log(i, "of:", all_pos.length, all_pos[i].geometry.coordinates);
+				console.log(i+1, "of:", all_pos.length, all_pos[i].geometry.coordinates);
 							
 				var where = all_pos[i].geometry.coordinates;
 							
 				var new_coord = [];
 				new_coord.push(where[0]);
 				new_coord.push(where[1]-0.007);
-							
+				$('#contador').hide();		
 				map.flyTo({
 					center: new_coord,
-					zoom: 13.2,
-					speed: 0.5
+					zoom: 15,
+					speed: 0.2
 				});
 							
 				var tags = "";
@@ -113,7 +122,7 @@ map.on('style.load', function (e) {
 				
 				var organiza = all_pos[i].properties.organiza || all_pos[i].properties.user.nombre
 
-				var html = "<h5 class='capitalize'>"+all_pos[i].properties.title+"</h5>"+"<div class='text-center'><span class='label success'>"+all_pos[i].properties.cuando+"</span></div><div class='text-center'><a>"+all_pos[i].properties.web+"</a></div>"+"<div class='text-center'>"+all_pos[i].properties.direccion+"</div><ul class='inline no-bullet'>"+tags+"</ul>";
+				var html = "<h5 class='capitalize'>"+all_pos[i].properties.title+"</h5>"+"<div class='text-center'><span class='label success'>"+all_pos[i].properties.cuando+"</span></div><div class='text-center'><a><span class='label secondary'> <i class='fa fa-link'></i> "+all_pos[i].properties.web+" </span> </a></div>"+"<div class='text-center'>"+all_pos[i].properties.direccion+"</div><ul class='inline no-bullet'>"+tags+"</ul>";
 							
 				var tooltip = new mapboxgl.Popup({closeButton: false})
 				.setLngLat(all_pos[i].geometry.coordinates)
@@ -122,9 +131,9 @@ map.on('style.load', function (e) {
 							
 				setTimeout(function () {
 					tooltip.remove();
-				},intervalo);
+				},intervalo-1000);
 								
-				var sidepost = '<div class="image_map"><img src="'+all_pos[i].properties.imagen+'" /></div><h5>'+ all_pos[i].properties.title +'</h5><p class="no-margin maxh">'+ all_pos[i].properties.description+'</p><hr /><h5>Organiza:</h5><div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h6 class="no-margin">' + organiza + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-6 columns text-center"><a><span class="label"> <i class="fa fa-link"></i> ' + all_pos[i].properties.user.web + '</span></a></div><div class="large-6 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>';
+				var sidepost = '<div class="image_map"><img src="'+all_pos[i].properties.imagen+'" /></div><h5>'+ all_pos[i].properties.title +'</h5><p class="no-margin maxh">'+ all_pos[i].properties.description+'</p><hr /><h5>Organiza:</h5><div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h6 class="no-margin">' + organiza + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-12 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>';
 				$('#features').show();
 				document.getElementById('features').innerHTML = sidepost;
 							
@@ -135,6 +144,7 @@ map.on('style.load', function (e) {
 					console.log("esperando:", small_time);
 					setTimeout(function () {
 						$('#features').hide();
+						$('#contador').show();
 						map.flyTo({
 							center: museo,
 							zoom: 12,

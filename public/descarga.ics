@@ -1,0 +1,468 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//50.87.239.62//NONSGML kigkonsult.se iCalcreator 2.20//
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-FROM-URL:http://mde.org.co/mde15/es
+X-WR-TIMEZONE:America/Bogota
+BEGIN:VTIMEZONE
+TZID:America/Bogota
+X-LIC-LOCATION:America/Bogota
+BEGIN:STANDARD
+DTSTART:19930404T000000
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:COT
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:ai1ec-6740@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:Academia Superior de Artes\,MDE Expandido
+CONTACT:
+DESCRIPTION:La paz como medio de edificación social \nAcademia Superior de 
+ Artes\nFecha: 26 y 27 de noviembre\nLugar: auditorio\, Academia Superior d
+ e Artes\nProyección y conversatorio de las cinco crónicas audiovisuales qu
+ e hacen parte de este proyecto\, que aborda hechos históricos de violencia
+  como ejercicio de memoria y se suman a la reflexión sobre el posconflicto
+ .\nInvitados: Víctor Ortiz G (antropólogo)\, como moderador del evento\; H
+ éctor Fabio Londoño (sociólogo) y Edison Villa Holguín.
+DTSTART;VALUE=DATE:20151126
+DTEND;VALUE=DATE:20151128
+GEO:+06.249462;-75.597287
+LOCATION:Academia Superior de Artes @ Cl. 43 #78-40\, Medellín\, Medellín\,
+  Antioquia\, Colombia
+SEQUENCE:0
+SUMMARY:Muestra audiovisual: La paz como medio de edificación social
+URL:http://mde.org.co/mde15/es/evento/muestra-audiovisual-la-paz-como-medio
+ -de-edificacion-social/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p><strong>La pa
+ z como medio de edificación social </strong></p>\n<p><strong>Academia Supe
+ rior de Artes</strong></p>\n<p><strong>Fecha: </strong>26 y 27 de noviembr
+ e</p>\n<p><strong>Lugar: </strong>auditorio\, Academia Superior de Artes</
+ p>\n<p>Proyección y conversatorio de las cinco crónicas audiovisuales que 
+ hacen parte de este proyecto\, que aborda hechos históricos de violencia c
+ omo ejercicio de memoria y se suman a la reflexión sobre el posconflicto.<
+ /p>\n<p><strong>Invitados:</strong> Víctor Ortiz G (antropólogo)\, como mo
+ derador del evento\; Héctor Fabio Londoño (sociólogo) y Edison Villa Holgu
+ ín.</p></BODY></HTML>
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-6287@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:MDE Expandido\,Universidad de Antioquia
+CONTACT:
+DESCRIPTION:
+DTSTART;TZID=America/Bogota:20151111T160000
+DTEND;TZID=America/Bogota:20151111T200000
+GEO:+06.256458;-75.578696
+LOCATION:CENTRO CULTURAL Facultad de Artes UNIVERSIDAD DE ANTIOQUIA\, Cra. 
+ 64b #51\, Medellín\, Antioquia\, Colombia
+RDATE;TZID=America/Bogota:20151107T160000
+RDATE;TZID=America/Bogota:20151108T160000
+RDATE;TZID=America/Bogota:20151109T160000
+RDATE;TZID=America/Bogota:20151110T160000
+RDATE;TZID=America/Bogota:20151111T160000
+RDATE;TZID=America/Bogota:20151112T160000
+RDATE;TZID=America/Bogota:20151113T160000
+SEQUENCE:0
+SUMMARY:Taller de proyectores y cine hecho a mano
+URL:http://mde.org.co/mde15/es/evento/taller-de-proyectores-y-cine-hecho-a-
+ mano/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p><a href='http
+ ://mde.org.co/mde15/wp-content/uploads/sites/2/2015/11/Taller-de-proyector
+ es-y-cine-hecho-a-mano-01-01.jpg' rel='prettyPhoto[2]'><img class='alignno
+ ne size-full wp-image-6288' src='http://mde.org.co/mde15/wp-content/upload
+ s/sites/2/2015/11/Taller-de-proyectores-y-cine-hecho-a-mano-01-01.jpg' alt
+ ='Taller de proyectores y cine hecho a mano-01-01' width='879' height='127
+ 5' /></a></p></BODY></HTML>
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-5517@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:Fundación Universitaria Bellas Artes\,MDE Expandi
+ do
+CONTACT:Fundación Universitaria Bellas Artes\; http://www.bellasartesmed.ed
+ u.co/
+DESCRIPTION:Panel Interuniversitario de carácter crítico: “Arte\, Capitalis
+ mo y Globalización”.\nOrienta Pablo Santamaría Alzate\, director de Invest
+ igaciones Universitarias.\nActivación del Pasaje Cervantes\, acceso princi
+ pal Sede Ayacucho.
+DTSTART;TZID=America/Bogota:20151111T180000
+DTEND;TZID=America/Bogota:20151111T200000
+GEO:+06.245791;-75.562885
+LOCATION:Fundación Universitaria Bellas Artes @ Fundacion Universitaria Bel
+ las Artes\, Cra. 42a #48-86\, Medellín\, Antioquia\, Colombia
+SEQUENCE:0
+SUMMARY:Mesa Interuniversitaria: arte\, capitalismo y globalización
+URL:http://mde.org.co/mde15/es/evento/panel-interuniversitario/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p>\n<div></div>
+ \n<div>Panel Interuniversitario de carácter crítico: “Arte\, Capitalismo y
+  Globalización”.</p>\n<p>Orienta Pablo Santamaría Alzate\, director de Inv
+ estigaciones Universitarias.</p>\n<p>Activación del Pasaje Cervantes\, acc
+ eso principal Sede Ayacucho.</p></div>\n<div></div>\n<div></div>\n<div><a 
+ href='http://mde.org.co/mde15/wp-content/uploads/sites/2/2015/10/MESA-INTE
+ RUNIVERSITARIA-ARTE-CAPITALISMO-Y-GLOBALIZACIÓN-ECARD-01-01.jpg' rel='pret
+ tyPhoto[2]'><img class='alignnone size-full wp-image-6652' src='http://mde
+ .org.co/mde15/wp-content/uploads/sites/2/2015/10/MESA-INTERUNIVERSITARIA-A
+ RTE-CAPITALISMO-Y-GLOBALIZACIÓN-ECARD-01-01.jpg' alt='MESA INTERUNIVERSITA
+ RIA -ARTE CAPITALISMO Y GLOBALIZACIÓN- ECARD-01-01' width='2875' height='1
+ 667' /></a></div>\n<div></div>\n<p></p></BODY></HTML>
+X-TAGS;LANGUAGE=es-ES:MDE15
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-6735@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:Fundación Universitaria Bellas Artes\,MDE Expandi
+ do
+CONTACT:
+DESCRIPTION:Tranxferencias\nFundación Universitaria Bellas Artes \nFecha: 1
+ 1 de noviembre\nHora: 6:00 p.m.\nLugar: Fundación Universitaria Bellas Art
+ es  – Sede Ayacucho (carrera. 42a No 48-86)\nMuestra de los procesos de ap
+ ropiación tecnológica del proyecto Tranxferencias\, construido desde el te
+ ma de investigación: “La transformación urbanística\, social y cultural de
+  la calle Ayacucho”.
+DTSTART;TZID=America/Bogota:20151111T180000
+DTEND;TZID=America/Bogota:20151117T200000
+GEO:+06.245791;-75.562885
+LOCATION:Fundación Universitaria Bellas Artes  @ Medellín\, Medellín\, Anti
+ oquia\, Colombia
+SEQUENCE:0
+SUMMARY:Tranxferencias
+URL:http://mde.org.co/mde15/es/evento/tranxferencias/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p><strong>Tranx
+ ferencias</strong></p>\n<p><strong>Fundación Universitaria Bellas Artes </
+ strong></p>\n<p><strong>Fecha: </strong>11 de noviembre<br />\n<strong>Hor
+ a: </strong>6:00 p.m.</p>\n<p><strong>Lugar: </strong>Fundación Universita
+ ria Bellas Artes  – Sede Ayacucho (carrera. 42a No 48-86)</p>\n<p>Muestra 
+ de los procesos de apropiación tecnológica del proyecto Tranxferencias\, c
+ onstruido desde el tema de investigación: “La transformación urbanística\,
+  social y cultural de la calle Ayacucho”.</p></BODY></HTML>
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-6315@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:MDE Expandido\,Universidad Nacional de Colombia
+CONTACT:
+DESCRIPTION:Exposición que compila los trabajos de investigación y creación
+  en artes que han obtenido los máximos reconocimientos\, muchos de ellos f
+ ueron ganadores de convocatorias de investigación de la Universidad Nacion
+ al de Colombia. Serán realizadas dos muestras en la Sala U. Arte Contempor
+ áneo de la Facultad de Arquitectura de la Universidad Nacional\, de igual 
+ forma se proponen sesiones de conversatorios con el público en la misma Sa
+ la.
+DTSTART;TZID=America/Bogota:20151112T173000
+DTEND;TZID=America/Bogota:20151112T203000
+GEO:+06.262831;-75.577072
+LOCATION:Facultad de Arquitectura\, Bloque 24 @ Universidad Nacional de Col
+ ombia\, Medellín\, Antioquia\, Colombia
+RDATE;TZID=America/Bogota:20160211T173000
+SEQUENCE:0
+SUMMARY:Inauguración Tránsitos – Sala U
+URL:http://mde.org.co/mde15/es/evento/inauguracion-transitos-sala-u/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p>Exposición qu
+ e compila los trabajos de investigación y creación en artes que han obteni
+ do los máximos reconocimientos\, muchos de ellos fueron ganadores de convo
+ catorias de investigación de la Universidad Nacional de Colombia. Serán re
+ alizadas dos muestras en la Sala U. Arte Contemporáneo de la Facultad de A
+ rquitectura de la Universidad Nacional\, de igual forma se proponen sesion
+ es de conversatorios con el público en la misma Sala.</p>\n<p><a href='htt
+ p://mde.org.co/mde15/wp-content/uploads/sites/2/2015/11/InvElectronica_tra
+ nsitos.jpg' rel='prettyPhoto[2]'><img class='alignnone size-full wp-image-
+ 6316' src='http://mde.org.co/mde15/wp-content/uploads/sites/2/2015/11/InvE
+ lectronica_transitos.jpg' alt='InvElectronica_transitos' width='1365' heig
+ ht='2362' /></a></p></BODY></HTML>
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-6715@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:MDE Expandido\,Parque Explora\,Universidad de Ant
+ ioquia
+CONTACT:
+DESCRIPTION:Colaboratorio Parque Explora\nCentro de encuentro ciudadano des
+ tinado al aprendizaje y el intercambio de distintos saberes y discursos\, 
+ procesos que se logran gracias a la interacción entre usuarios\, expertos 
+ y grupos\, que se reúnen en talleres\, semilleros y residencias colaborati
+ vas.\nTaller abierto\nFecha: 13 de noviembre\nLugar: Plazoleta Parque Expl
+ ora\nHora: 2:00 p.m. a 8:00 p.m.
+DTSTART;TZID=America/Bogota:20151113T140000
+DTEND;TZID=America/Bogota:20151113T200000
+GEO:+06.270787;-75.565689
+LOCATION:Parque Explora @ Medellín\, Medellín\, Antioquia\, Colombia
+SEQUENCE:0
+SUMMARY:Colaboratorio Fotosíntesis
+URL:http://mde.org.co/mde15/es/evento/colaboratorio-fotosintesis/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p><strong>Colab
+ oratorio Parque Explora</strong></p>\n<p>Centro de encuentro ciudadano des
+ tinado al aprendizaje y el intercambio de distintos saberes y discursos\, 
+ procesos que se logran gracias a la interacción entre usuarios\, expertos 
+ y grupos\, que se reúnen en talleres\, semilleros y residencias colaborati
+ vas.</p>\n<p><strong>Taller abierto</strong></p>\n<p><strong>Fecha: </stro
+ ng>13 de noviembre</p>\n<p><strong>Lugar: </strong>Plazoleta Parque Explor
+ a</p>\n<p><strong>Hora:</strong> 2:00 p.m. a 8:00 p.m.</p>\n<p><a href='ht
+ tp://mde.org.co/mde15/wp-content/uploads/sites/2/2015/11/Fotosintesis-01.j
+ pg' rel='prettyPhoto[2]'><img class='alignnone size-full wp-image-6716' sr
+ c='http://mde.org.co/mde15/wp-content/uploads/sites/2/2015/11/Fotosintesis
+ -01.jpg' alt='Fotosintesis-01' width='1949' height='2835' /></a></p></BODY
+ ></HTML>
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-6734@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:MDE Expandido\,Universidad de Antioquia
+CONTACT:+57(6) 251 36 36\; info@museodeantioquia.org.co\; https://www.museo
+ deantioquia.co/
+DESCRIPTION:Sesión de cine en vivo con el Colectivo Luz y Fuerza\, y los es
+ tudiantes del taller. Proyecto Fotosíntesis.\nFecha: 13 de noviembre\nHora
+ : 7:00 p.m. – 8:30 p.m.\nLugar: Museo de Antioquia
+DTSTART;TZID=America/Bogota:20151113T190000
+DTEND;TZID=America/Bogota:20151113T203000
+GEO:+06.252137;-75.568816
+LOCATION:Museo de Antioquia @ Carrera 52 # 52-43\, Medellín - Antioquia\, C
+ olombia
+SEQUENCE:0
+SUMMARY:Performance + Clausura del taller Cine hecho a mano
+URL:http://mde.org.co/mde15/es/evento/performance-clausura-del-taller-cine-
+ hecho-a-mano/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p><strong>Sesió
+ n de cine en vivo con el Colectivo Luz y Fuerza\, y los estudiantes del ta
+ ller. Proyecto Fotosíntesis.</strong></p>\n<p><strong>Fecha:</strong> 13 d
+ e noviembre</p>\n<p><strong>Hora: </strong>7:00 p.m. – 8:30 p.m.</p>\n<p><
+ strong>Lugar: </strong>Museo de Antioquia</p>\n<p><a href='http://mde.org.
+ co/mde15/wp-content/uploads/sites/2/2015/11/Fotosintesis-01.jpg' rel='pret
+ tyPhoto[2]'><img class='alignnone size-full wp-image-6716' src='http://mde
+ .org.co/mde15/wp-content/uploads/sites/2/2015/11/Fotosintesis-01.jpg' alt=
+ 'Fotosintesis-01' width='1949' height='2835' /></a></p></BODY></HTML>
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-899@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:MDE Expandido
+CONTACT:
+DESCRIPTION:Sancocho Crítico / sábado 14 / 5:00pm / Barrio Naranjal\nEl pro
+ yecto Barrio taller: Acciones cítricas es una iniciativa de crear un espac
+ io de diálogo en el Barrio Naranjal de Medellín\, actualmente en proceso d
+ e gentrificación\, por medio de intervenciones críticas que artistas o per
+ sonas interesadas desarrollarán en conjunto con la comunidad local. Se tra
+ ta por lo tanto de una apropiación de los espacios de un barrio como forma
+  de poner en cuestión los aspectos éticos sin resolver de la renovación ur
+ bana de Medellín\, considerando que la gentrificación no es práctica exclu
+ siva de lo local sino una dinámica presente en lo global. La propuesta est
+ á dirigida a cualquier ciudadano dispuesto a repensar nuestro contexto\, c
+ omprender el momento histórico de la ciudad\, y vivir la responsabilidad q
+ ue tiene el arte con la sociedad\, y ésta a su vez con la ciudad.\nComo pr
+ oducto final se busca  crear una ponencia\, además de una publicación digi
+ tal y un módulo expositivo (en afiches o pendones)\, que den cuenta del pr
+ oceso a través de fotografías y vídeos.
+DTSTART;TZID=America/Bogota:20151114T170000
+DTEND;TZID=America/Bogota:20151114T200000
+GEO:+06.250181;-75.584433
+LOCATION:Naranjal\, Medellín\, Medellin\, Antioquia\, Colombia
+SEQUENCE:0
+SUMMARY:Sancocho Crítico / Proyecto Barrio taller: Acciones cítricas.
+URL:http://mde.org.co/mde15/es/evento/barrio-taller-acciones-citricas/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p>Sancocho Crít
+ ico / sábado 14 / 5:00pm / Barrio Naranjal</p>\n<p>El proyecto <em>Barrio 
+ taller: Acciones cítricas</em> es una iniciativa de crear un espacio de di
+ álogo en el Barrio Naranjal de Medellín\, actualmente en proceso de gentri
+ ficación\, por medio de intervenciones críticas que artistas o personas in
+ teresadas desarrollarán en conjunto con la comunidad local. Se trata por l
+ o tanto de una apropiación de los espacios de un barrio como forma de pone
+ r en cuestión los aspectos éticos sin resolver de la renovación urbana de 
+ Medellín\, considerando que la gentrificación no es práctica exclusiva de 
+ lo local sino una dinámica presente en lo global. La propuesta está dirigi
+ da a cualquier ciudadano dispuesto a repensar nuestro contexto\, comprende
+ r el momento histórico de la ciudad\, y vivir la responsabilidad que tiene
+  el arte con la sociedad\, y ésta a su vez con la ciudad.</p>\n<p>Como pro
+ ducto final se busca  crear una ponencia\, además de una publicación digit
+ al y un módulo expositivo (en afiches o pendones)\, que den cuenta del pro
+ ceso a través de fotografías y vídeos.</p>\n<p><a href='http://mde.org.co/
+ mde15/wp-content/uploads/sites/2/2015/09/1-2.jpg' rel='prettyPhoto[2]'><im
+ g class='alignnone size-full wp-image-904' src='http://mde.org.co/mde15/wp
+ -content/uploads/sites/2/2015/09/1-2.jpg' alt='1 (2)' width='1772' height=
+ '2131' /></a></p></BODY></HTML>
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-5519@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:Fundación Universitaria Bellas Artes\,MDE Expandi
+ do
+CONTACT:Fundación Universitaria Bellas Artes\; 4447787 opción 1\; http://ww
+ w.bellasartesmed.edu.co/
+DESCRIPTION:Sesiones de trabajo presencial\, durante 10 semanas\, con una i
+ ntensidad de 2 horas semanales. En este taller los asistentes desarrollará
+ n ejercicios de exploración narrativa alrededor de la crítica de arte.\nSi
+  bien\, el taller que se propone a continuación tiene por objetivo fomenta
+ r la crítica como escenario de circulación\, apropiación y crecimiento del
+  circuito del arte local\, su carácter eminentemente narrativo y escritura
+ l puede relacionarse con otros objetivos posibles de la escritura y el fom
+ ento de comentarios críticos sobre el arte en el marco del MDE15.\nLugar: 
+ Fundación Universitaria Bellas Artes\, Sede Ayacucho\, Aula 402.\nHorario:
+  martes de 6:00 p.m. a 8:00 p.m.\nInformes: 444 77 87 opción 1
+DTSTART;TZID=America/Bogota:20151117T180000
+DTEND;TZID=America/Bogota:20151117T200000
+GEO:+06.245791;-75.562885
+LOCATION:Fundación Universitaria Bellas Artes @ Fundacion Universitaria Bel
+ las Artes\, Cra. 42a #48-86\, Medellín\, Antioquia\, Colombia
+RRULE:FREQ=WEEKLY;UNTIL=20151201T235959Z;BYDAY=TU;WKST=MO
+SEQUENCE:0
+SUMMARY:Taller de Escrituras Críticas MDE15
+URL:http://mde.org.co/mde15/es/evento/taller-de-escrituras-criticas-mde15/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p>Sesiones de t
+ rabajo presencial\, durante 10 semanas\, con una intensidad de 2 horas sem
+ anales. En este taller los asistentes desarrollarán ejercicios de explorac
+ ión narrativa alrededor de la crítica de arte.</p>\n<p>Si bien\, el taller
+  que se propone a continuación tiene por objetivo fomentar la crítica como
+  escenario de circulación\, apropiación y crecimiento del circuito del art
+ e local\, su carácter eminentemente narrativo y escritural puede relaciona
+ rse con otros objetivos posibles de la escritura y el fomento de comentari
+ os críticos sobre el arte en el marco del MDE15.</p>\n<p>Lugar: Fundación 
+ Universitaria Bellas Artes\, Sede Ayacucho\, Aula 402.<br />\nHorario: mar
+ tes de 6:00 p.m. a 8:00 p.m.<br />\nInformes: 444 77 87 opción 1</p>\n<p><
+ a href='http://mde.org.co/mde15/wp-content/uploads/sites/2/2015/10/ecritur
+ as-criticas.jpg' rel='prettyPhoto[2]'><img class='alignnone size-full wp-i
+ mage-5857' src='http://mde.org.co/mde15/wp-content/uploads/sites/2/2015/10
+ /ecrituras-criticas.jpg' alt='ecrituras criticas' width='1023' height='102
+ 2' /></a></p></BODY></HTML>
+X-COST:75.000
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-6033@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:Fundación Universitaria Bellas Artes\,MDE Expandi
+ do
+CONTACT:Fundación Universitaria Bellas Artes\; 4447787 opción 1\; http://ww
+ w.bellasartesmed.edu.co/
+DESCRIPTION:Sesiones de trabajo presencial\, durante 10 semanas\, con una i
+ ntensidad de 2 horas semanales. En este taller los asistentes desarrollará
+ n ejercicios de exploración narrativa alrededor de la crítica de arte.\nSi
+  bien\, el taller que se propone a continuación tiene por objetivo fomenta
+ r la crítica como escenario de circulación\, apropiación y crecimiento del
+  circuito del arte local\, su carácter eminentemente narrativo y escritura
+ l puede relacionarse con otros objetivos posibles de la escritura y el fom
+ ento de comentarios críticos sobre el arte en el marco del MDE15.\nLugar: 
+ Fundación Universitaria Bellas Artes\, Sede Ayacucho\, Aula 402.\nHorario:
+  martes de 6:00 p.m. a 8:00 p.m.\nInformes: 444 77 87 opción 1
+DTSTART;TZID=America/Bogota:20160126T180000
+DTEND;TZID=America/Bogota:20160126T200000
+GEO:+06.245791;-75.562885
+LOCATION:Fundacion Universitaria Bellas Artes\, Cra. 42a #48-86\, Medellín\
+ , Antioquia\, Colombia
+RRULE:FREQ=WEEKLY;UNTIL=20160216T235959Z;BYDAY=TU;WKST=MO
+SEQUENCE:0
+SUMMARY:Taller de Escrituras Críticas MDE15
+URL:http://mde.org.co/mde15/es/evento/taller-de-escrituras-criticas-mde15-2
+ /
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p>\n<div></div>
+ \n<div>Sesiones de trabajo presencial\, durante 10 semanas\, con una inten
+ sidad de 2 horas semanales. En este taller los asistentes desarrollarán ej
+ ercicios de exploración narrativa alrededor de la crítica de arte.</p>\n<p
+ >Si bien\, el taller que se propone a continuación tiene por objetivo fome
+ ntar la crítica como escenario de circulación\, apropiación y crecimiento 
+ del circuito del arte local\, su carácter eminentemente narrativo y escrit
+ ural puede relacionarse con otros objetivos posibles de la escritura y el 
+ fomento de comentarios críticos sobre el arte en el marco del MDE15.</p>\n
+ <p>Lugar: Fundación Universitaria Bellas Artes\, Sede Ayacucho\, Aula 402.
+ <br />\nHorario: martes de 6:00 p.m. a 8:00 p.m.<br />\nInformes: 444 77 8
+ 7 opción 1</p></div>\n<div></div>\n<div><a href='http://mde.org.co/mde15/w
+ p-content/uploads/sites/2/2015/10/ecrituras-criticas.jpg' rel='prettyPhoto
+ [2]'><img class='alignnone size-full wp-image-5857' src='http://mde.org.co
+ /mde15/wp-content/uploads/sites/2/2015/10/ecrituras-criticas.jpg' alt='ecr
+ ituras criticas' width='1023' height='1022' /></a></div>\n<p></p></BODY></
+ HTML>
+X-COST:75.000
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-907@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:MDE Expandido
+CONTACT:Fundación Universitaria Bellas Artes\; http://www.bellasartesmed.ed
+ u.co/
+DESCRIPTION:De visita con el artista\nDiálogos MDE15 y Fundación Universita
+ ria Bellas Artes\nUna mediación de Sala Plástica.\nArtista invitada: Lilia
+ na Angulo\n30 de octubre\, 5:00 p.m. Plaza Botero.\nSALA PLÁSTICA es un Pr
+ oyecto de investigación/creación del programa de Artes Plásticas de la Fun
+ dación Universitaria Bellas Artes de Medellín\, que busca generar un espac
+ io de intervención urbana mediante conversatorios y talleres con artistas 
+ MDE15 y docentes.\nEl dispositivo consta de una sala doméstica roja que se
+  ubica en diferentes espacios de ciudad\, generando activaciones del arte 
+ en el centro de Medellín por medio de dos actividades: Un conversatorio y 
+ un taller.\n\n 
+DTSTART;TZID=America/Bogota:20160205T170000
+DTEND;TZID=America/Bogota:20160205T200000
+GEO:+06.251844;-75.568201
+LOCATION:Plaza botero @ Plaza Botero\, Carabobo\, Medellín\, Antioquia\, Co
+ lombia
+RDATE;TZID=America/Bogota:20160205T170000
+SEQUENCE:0
+SUMMARY:De visita con el artista\, diálogos MDE15 y FUBA con Liliana Angulo
+URL:http://mde.org.co/mde15/es/evento/de-visita-con-artistas/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><p><strong>De vi
+ sita con el artista</strong></p>\n<p><strong>Diálogos MDE15 y Fundación Un
+ iversitaria Bellas Artes</strong></p>\n<p><strong>Una mediación de Sala Pl
+ ástica.</strong></p>\n<p><strong>Artista invitada: Liliana Angulo</strong>
+ </p>\n<p>30 de octubre\, 5:00 p.m. Plaza Botero.</p>\n<p>SALA PLÁSTICA es 
+ un Proyecto de investigación/creación del programa de Artes Plásticas de l
+ a Fundación Universitaria Bellas Artes de Medellín\, que busca generar un 
+ espacio de intervención urbana mediante conversatorios y talleres con arti
+ stas MDE15 y docentes.</p>\n<p>El dispositivo consta de una sala doméstica
+  roja que se ubica en diferentes espacios de ciudad\, generando activacion
+ es del arte en el centro de Medellín por medio de dos actividades: Un conv
+ ersatorio y un taller.</p>\n<p><a href='http://mde.org.co/mde15/wp-content
+ /uploads/sites/2/2015/09/unnamed.jpg' rel='prettyPhoto[2]'><img class='ali
+ gnnone size-full wp-image-5902' src='http://mde.org.co/mde15/wp-content/up
+ loads/sites/2/2015/09/unnamed.jpg' alt='De visita con el artista' width='2
+ 875' height='1667' /></a></p>\n<p> </p></BODY></HTML>
+END:VEVENT
+BEGIN:VEVENT
+UID:ai1ec-6032@mde.org.co/mde15
+DTSTAMP:20151111T232557Z
+CATEGORIES;LANGUAGE=es-ES:Fundación Universitaria Bellas Artes\,MDE Expandi
+ do
+CONTACT:+57(6) 251 36 36\; info@museodeantioquia.org.co\; https://www.museo
+ deantioquia.co/
+DESCRIPTION:De visita con el artista\nDiálogos MDE15 y Fundación Universita
+ ria Bellas Artes\nUna mediación de Sala Plástica.\n5 de febrero de 2016\, 
+ 5:00 p.m. Plaza Botero.\nSALA PLÁSTICA es un Proyecto de investigación/cre
+ ación del programa de Artes Plásticas de la Fundación Universitaria Bellas
+  Artes de Medellín\, que busca generar un espacio de intervención urbana m
+ ediante conversatorios y talleres con artistas MDE15 y docentes.\nEl dispo
+ sitivo consta de una sala doméstica roja que se ubica en diferentes espaci
+ os de ciudad\, generando activaciones del arte en el centro de Medellín po
+ r medio de dos actividades: Un conversatorio y un taller.\n 
+DTSTART;TZID=America/Bogota:20160205T170000
+DTEND;TZID=America/Bogota:20160205T200000
+GEO:+06.252036;-75.568447
+LOCATION:Plaza Botero\, Carabobo\, Medellín\, Antioquia\, Colombia
+SEQUENCE:0
+SUMMARY:DE VISITA CON EL ARTISTA\, DIÁLOGOS MDE15 Y FUBA
+URL:http://mde.org.co/mde15/es/evento/de-visita-con-el-artista-dialogos-mde
+ 15-y-fuba/
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 3.2//E
+ N'>\\n<HTML>\\n<HEAD>\\n<TITLE></TITLE>\\n</HEAD>\\n<BODY><div class='ai1e
+ c-event-avatar alignleft timely'><img src='http://mde.org.co/mde15/wp-cont
+ ent/uploads/sites/2/2015/09/ECARD-DIÁLOGO-DE-VISITA-CON-EL-ARTISTA-MDE15-F
+ UBA-02-300x174.jpg' width='300' height='174' /></div><p><strong>De visita 
+ con el artista</strong></p>\n<p><strong>Diálogos MDE15 y Fundación Univers
+ itaria Bellas Artes</strong></p>\n<p><strong>Una mediación de Sala Plástic
+ a.</strong></p>\n<p>5 de febrero de 2016\, 5:00 p.m. Plaza Botero.</p>\n<p
+ >SALA PLÁSTICA es un Proyecto de investigación/creación del programa de Ar
+ tes Plásticas de la Fundación Universitaria Bellas Artes de Medellín\, que
+  busca generar un espacio de intervención urbana mediante conversatorios y
+  talleres con artistas MDE15 y docentes.</p>\n<p>El dispositivo consta de 
+ una sala doméstica roja que se ubica en diferentes espacios de ciudad\, ge
+ nerando activaciones del arte en el centro de Medellín por medio de dos ac
+ tividades: Un conversatorio y un taller.</p>\n<p> </p></BODY></HTML>
+END:VEVENT
+END:VCALENDAR
