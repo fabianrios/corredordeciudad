@@ -18,11 +18,12 @@ class ApiController < ApplicationController
             evento.description = event.descripcion
             evento.geo = [event.lat,event.long]
             evento.attach = event.imagen.big.url
-            evento.contact = "#{event.user.nombre} #{event.user.email}"
+            evento.contact = "#{event.user.nombre}\; #{event.user.telefono}\; #{event.user.email}\; #{event.user.web}"
             evento.created = event.created_at
             evento.last_modified = event.updated_at
             evento.categories = "LANGUAGE=es-ES:MDE Expandido, #{event.organiza}"
             evento.organizer = event.organiza
+            evento.location = event.direccion
             evento.uid = event.id.to_s+"app"
             evento.url = event.web
             calendar.add_event(evento)
