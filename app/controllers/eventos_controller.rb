@@ -3,6 +3,7 @@ class EventosController < ApplicationController
   before_filter :authenticate_user!
   before_action :tag_cloud
   
+  
   # GET /eventos
   # GET /eventos.json
   def index
@@ -10,12 +11,19 @@ class EventosController < ApplicationController
     @tags = current_user.tag_counts_on(:tags)
     if current_user.try(:admin?) && params[:tag]
       @eventos = Evento.tagged_with(params[:tag])
+      @proyectos = User.all
     elsif current_user.try(:admin?)
       @eventos = Evento.all
+      @proyectos = User.all
     elsif params[:tag]
       @eventos = Evento.where(:user_id => current_user.id).tagged_with(params[:tag])
     else
       @eventos = Evento.where(:user_id => current_user.id)
+    end
+    respond_to do |format|
+      format.html
+      format.json
+      format.xls
     end
   end
 

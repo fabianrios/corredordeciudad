@@ -8,7 +8,7 @@ class PagesController < ApplicationController
         @eventos_all = Evento.where(:publish => true).order("cuando ASC")
       end
     end
-    @eventos = Evento.closer_date(Time.now).limit(20)
+    @eventos = Evento.closer_date(Time.now)
     @geojson = {}
     @geojson[:type] = "FeatureCollection";
     @geojson[:features] = [];
@@ -22,6 +22,8 @@ class PagesController < ApplicationController
         else
           @imagen = "http://placehold.it/350x200?text=sin+imagen"
         end
+        
+        @fecha = event.cuando > Time.now-1.day ? true : false;
         
         @geojson[:features].push({
               type: "Feature",
@@ -39,7 +41,8 @@ class PagesController < ApplicationController
                 duracion: event.duracion,
                 organiza: event.organiza,
                 tag_list: event.tag_list, 
-                user: event.user
+                user: event.user,
+                fecha: @fecha
               } 
           })
       end

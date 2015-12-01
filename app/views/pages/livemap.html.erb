@@ -23,24 +23,11 @@ var source = new mapboxgl.GeoJSONSource({
 });
 window.setInterval(function() {
 	source.setData(url);
-	// console.log("source",source);
 }, intervalo);
 		
 
 map.on('style.load', function (e) {
 			
-	// map.setLayoutProperty('country-label-lg', 'text-field', '{name_' + 'es' + '}');
-	// map.setPaintProperty('water', 'fill-color', '#5796e5');
-	// map.setPaintProperty('waterway', 'line-color', '#5796e5');
-	// map.setPaintProperty('landuse_park', 'fill-color', '#4CAF50');
-	// // map.setPaintProperty('landuse_industrial', 'fill-color', '#ece351');
-	// // map.setPaintProperty('landuse_wood', 'fill-color', '#145406');
-	// map.setPaintProperty('hillshade_highlight_bright', 'fill-color', '#70A93F');
-	// map.setPaintProperty('road-trunk', 'line-color', '#F5BF1D');
-	// map.setPaintProperty('road-street-low-zoom', 'line-color', '#2d2c26');
-			
-			
-
 	map.addSource('markers', source);
 	map.addLayer({
 		"id": "markers",
@@ -67,7 +54,7 @@ map.on('style.load', function (e) {
 		}
 	}); // addLayers
 			
-	var time_map = 560000;
+	var time_map = 56000;
 	var small_time = 40000;
 	window.setInterval(function() {
 		demo();
@@ -81,7 +68,16 @@ map.on('style.load', function (e) {
 		$.ajax({
 			url: "/pages/index.json",
 		}).done(function(data) {
-			all_pos = data.features
+			var new_ones = [];
+			$.each(data.features, function(i, item) {
+				console.log(item.properties);
+				if (item.properties.fecha){
+					console.log(item);
+					new_ones.push(item);	
+				}
+			});
+			all_pos = new_ones
+			console.log(all_pos,data.features);
 			var tiempo = all_pos.length*intervalo;
 			time_map = (all_pos.length*intervalo)+tiempo;
 			small_time = (time_map-tiempo)/all_pos.length;

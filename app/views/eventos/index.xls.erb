@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Eventos">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">nombre</Data></Cell>
+        <Cell><Data ss:Type="String">Lugar evento</Data></Cell>
+        <Cell><Data ss:Type="String">Direccion evento</Data></Cell>
+        <Cell><Data ss:Type="String">Necesita espacio</Data></Cell>
+        <Cell><Data ss:Type="String">Requerimientos</Data></Cell>
+        <Cell><Data ss:Type="String">Descripción</Data></Cell>
+        <Cell><Data ss:Type="String">Web</Data></Cell>
+        <Cell><Data ss:Type="String">Cuando</Data></Cell>
+        <Cell><Data ss:Type="String">Organiza</Data></Cell>
+		<Cell><Data ss:Type="String">Nombre</Data></Cell>
+		<Cell><Data ss:Type="String">Email</Data></Cell>
+		<Cell><Data ss:Type="String">Lugar</Data></Cell>
+		<Cell><Data ss:Type="String">Direccion</Data></Cell>
+		<Cell><Data ss:Type="String">Telefono</Data></Cell>
+		<Cell><Data ss:Type="String">Barrio</Data></Cell>
+		<Cell><Data ss:Type="String">Categoria</Data></Cell>
+		<Cell><Data ss:Type="String">Descripcion</Data></Cell>
+      </Row>
+    <% @eventos.each do |event| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= event.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.nombre %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.lugar %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.direccion %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.espacio.present? ? "Tiene necesidades de espacio" : "No tiene necesidades de espacio" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.necesidades.present? ? event.necesidades : "No tiene" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.descripcion %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.web %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.cuando %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= event.organiza %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= event.user.nombre %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= event.user.email %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= event.user.lugar.present? ? event.user.lugar : "No tiene" %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= event.user.direccion.present? ? event.user.direccion : "No tiene" %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= event.user.telefono.present? ? event.user.telefono : "No tiene" %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= event.user.barrio.present? ? event.user.barrio : "No tiene" %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= event.user.categoria.present? ? event.user.categoria : "No tiene" %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= event.user.descripcion.present? ? event.user.descripcion : "No tiene" %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Proyectos">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">nombre</Data></Cell>
+        <Cell><Data ss:Type="String">Lugar evento</Data></Cell>
+        <Cell><Data ss:Type="String">Direccion evento</Data></Cell>
+        <Cell><Data ss:Type="String">Necesita espacio</Data></Cell>
+        <Cell><Data ss:Type="String">Requerimientos</Data></Cell>
+        <Cell><Data ss:Type="String">Descripción</Data></Cell>
+        <Cell><Data ss:Type="String">Web</Data></Cell>
+        <Cell><Data ss:Type="String">Cuando</Data></Cell>
+        <Cell><Data ss:Type="String">Organiza</Data></Cell>
+		<Cell><Data ss:Type="String">Nombre</Data></Cell>
+		<Cell><Data ss:Type="String">Email</Data></Cell>
+		<Cell><Data ss:Type="String">Lugar</Data></Cell>
+		<Cell><Data ss:Type="String">Direccion</Data></Cell>
+		<Cell><Data ss:Type="String">Telefono</Data></Cell>
+		<Cell><Data ss:Type="String">Barrio</Data></Cell>
+		<Cell><Data ss:Type="String">Categoria</Data></Cell>
+		<Cell><Data ss:Type="String">Descripcion</Data></Cell>
+      </Row>
+    <% @proyectos.each do |user| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= user.id %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= user.nombre %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= user.email %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= user.lugar.present? ? user.lugar : "No tiene" %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= user.direccion.present? ? user.direccion : "No tiene" %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= user.telefono.present? ? user.telefono : "No tiene" %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= user.barrio.present? ? user.barrio : "No tiene" %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= user.categoria.present? ? user.categoria : "No tiene" %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= user.descripcion.present? ? user.descripcion : "No tiene" %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

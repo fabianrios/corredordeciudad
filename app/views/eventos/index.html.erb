@@ -79,6 +79,9 @@
 <div class="row">
 	<div class="large-12 columns">
 		<h2>Proyectos (<%= @users.present? ? @users.count : 0 %>)</h2>
+		<%= link_to eventos_path(format: "xls"), :class => "button success right medium" do %>
+			<%= fa_icon "download", text: "Descargar XLS" %>
+		<% end %>
 		<br />
 		<ul class="large-block-grid-3 small-block-grid-2">
 			<% @users.each do |user| %>
