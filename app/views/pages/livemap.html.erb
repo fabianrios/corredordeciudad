@@ -5,7 +5,12 @@
 <script>
 		
 var museo = [-75.571529,6.252187];
-var intervalo = 40000;
+var futuros = <%= @future_events.count %>;
+var totales = <%= @eventos.count %>;
+var intervalo = 60000;
+
+
+console.log(futuros);
 // Provide your access token
 mapboxgl.accessToken = 'pk.eyJ1IjoiZmFiaWFucmlvcyIsImEiOiJjaWc3ZDFhMjMwczFvdjRrcHF4bXliMzNoIn0.PTi-JKyYhEaQknlR6iGCoA';
 // Create a map in the div #map
@@ -53,9 +58,13 @@ map.on('style.load', function (e) {
 			"text-halo-blur": 1,
 		}
 	}); // addLayers
-			
-	var time_map = 56000;
-	var small_time = 40000;
+	
+	var time_map = intervalo*futuros;
+	var small_time = intervalo;
+	
+	document.getElementById('contador').innerHTML = "<h4><span class='numbers'>" + futuros + "</span> Proximos eventos <span class='numbers totales'>"  + totales + "</span> En total</h4>";
+	$('#contador').show();
+	
 	window.setInterval(function() {
 		demo();
 		console.log("corrio la funcion primaria demo", time_map);
@@ -70,18 +79,15 @@ map.on('style.load', function (e) {
 		}).done(function(data) {
 			var new_ones = [];
 			$.each(data.features, function(i, item) {
-				console.log(item.properties);
+				//console.log(item.properties);
 				if (item.properties.fecha){
-					console.log(item);
 					new_ones.push(item);	
 				}
 			});
 			all_pos = new_ones
-			console.log(all_pos,data.features);
-			var tiempo = all_pos.length*intervalo;
-			time_map = (all_pos.length*intervalo)+tiempo;
-			small_time = (time_map-tiempo)/all_pos.length;
-			document.getElementById('contador').innerHTML = "<h4>" + all_pos.length + " Eventos</h4>";
+			time_map = (all_pos.length*intervalo)+(intervalo*2);
+			small_time = (time_map-(intervalo*2))/all_pos.length;
+			document.getElementById('contador').innerHTML = "<h4><span class='numbers'>" + all_pos.length + "</span> Proximos eventos <span class='numbers totales'>"  + totales + "</span>En total</h4>";
 			$('#contador').show();
 			console.log("tiempo para correr demo: ", time_map, "para que corra cada uno: " + small_time);
 		}).fail(function(data){
@@ -104,8 +110,8 @@ map.on('style.load', function (e) {
 				$('#contador').hide();		
 				map.flyTo({
 					center: new_coord,
-					zoom: 15,
-					speed: 0.2
+					zoom: 15.4,
+					speed: 0.3
 				});
 							
 				var tags = "";
@@ -127,7 +133,7 @@ map.on('style.load', function (e) {
 							
 				setTimeout(function () {
 					tooltip.remove();
-				},intervalo-1000);
+				},intervalo-200);
 								
 				var sidepost = '<div class="image_map"><img src="'+all_pos[i].properties.imagen+'" /></div><h5>'+ all_pos[i].properties.title +'</h5><p class="no-margin maxh">'+ all_pos[i].properties.description+'</p><hr /><h5>Organiza:</h5><div class="logo"><img src="'+all_pos[i].properties.user.logo.thumb.url+'" /></div><h6 class="no-margin">' + organiza + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.lugar + '</h6><h6 class="no-margin subheader">' + all_pos[i].properties.user.direccion + '</h6><br /><div class="row"><div class="large-12 columns text-center"><span class="label secondary"> <i class="fa fa-phone"></i> ' + all_pos[i].properties.user.telefono + '</span></div></div>';
 				$('#features').show();
@@ -137,21 +143,19 @@ map.on('style.load', function (e) {
 				if (i < all_pos.length) {
 					myLoop();
 				}else{
+					$('#features').hide();
+					$('#contador').show();
+					tooltip.remove();
+					map.flyTo({
+						center: museo,
+						zoom: 12,
+						speed: 0.5
+					});
 					console.log("esperando:", small_time);
-					setTimeout(function () {
-						$('#features').hide();
-						$('#contador').show();
-						map.flyTo({
-							center: museo,
-							zoom: 12,
-							speed: 0.5
-						});
-					},intervalo);
-								
 					setTimeout(function () {
 					},small_time);
 				}
-			},intervalo)
+			},small_time)
 		}
 
 		myLoop(all_pos);//  start the loop

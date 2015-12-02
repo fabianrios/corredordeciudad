@@ -111,6 +111,22 @@ h1, h2, h3, h4, h5, h6{
 	float: left;
 	margin-right: 10px;
 }
+
+.numbers{
+	display: inline-block;
+	background: #C2E4CA;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	@include border-radius(100%);
+	text-align: center;
+	margin-right: 5px;
+	border:1px solid white;
+	&.totales{
+		background: #EF8390;
+		color:white;
+	}
+}
 // /general
 
 //sidebar
@@ -257,11 +273,14 @@ textarea{
 	display: none;
 	position: absolute;
 	left: 50%;
-	margin-left: -200px;
-	width: 200px;
+	margin-left: -280px;
+	width: auto;
 	background: rgba(255,255,255,.8);
 	z-index: 9;
 	text-align: center;
+	padding:0 10px;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
 }
 
 
